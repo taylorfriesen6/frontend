@@ -2,42 +2,21 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledSignUpForm = styled.form`
-  color: ${(pr) => pr.theme.fontColor};
+  position: absolute;
+  width: 570px;
+  height: 589px;
+  left: 435px;
+  top: 265px;
 
-  font-weight: bold;
-  background-color: ${(pr) => pr.theme.tertiaryColor};
-  display: ${(pr) => pr.theme.display};
-  justify-content: ${(pr) => pr.theme.justifyContent};
-  flex-wrap: ${(pr) => pr.theme.flexWrap};
-  border-radius: ${(pr) => pr.theme.borderRadius};
+  background: #FFFFFF;
+  box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
+  `;
 
-  h2 {
-
-    white-space: ${(pr) => pr.theme.whiteSpace};
-    color: ${(pr) => pr.theme.fontColor};
-    background-color: ${(pr) => pr.theme.secondaryColor};
-    padding: 5%;
-  }
-  input {
-
-  }
-  button {
-    color: ${(pr) => pr.theme.fontColor};
-    white-space: ${(pr) => pr.theme.whiteSpace};
-    background-color: ${(pr) => pr.theme.primaryColor};
-  }
-
-  span {
-    color: ${(pr) => pr.theme.errorColor};
-    white-space: ${(pr) => pr.theme.whiteSpace};
-  }
-`;
 
 export default function SignUpForm({
   values,
   change,
   submit,
-  disabled,
   errors,
 }) {
   const onSubmit = (evt) => {
@@ -51,18 +30,8 @@ export default function SignUpForm({
   };
   return (
     <StyledSignUpForm className="signupformcontainer" onSubmit={onSubmit}>
-      <h2>Member Sign Up</h2>
+      <h2>Sign Up</h2>
       <div>
-        <label>
-          Username
-          <input
-            value={values.username}
-            onChange={onChange}
-            name="username"
-            type="text"
-          />
-        </label>
-        <p>{errors.username}</p>
 
         <label>
           First Name
@@ -87,6 +56,17 @@ export default function SignUpForm({
         <p>{errors.lastname}</p>
 
         <label>
+          Phone Number
+          <input
+            value={values.phone}
+            onChange={onChange}
+            name="phone"
+            type="text"
+          />
+        </label>
+        <p>{errors.phone}</p>
+
+        <label>
           Email
           <input
             value={values.email}
@@ -103,6 +83,17 @@ export default function SignUpForm({
             value={values.password}
             onChange={onChange}
             name="password"
+            type="password"
+          />
+        </label>
+        <p>{errors.password}</p>
+
+        <label>
+          Confirm Password
+          <input
+            value={values.confirmPassword}
+            onChange={onChange}
+            name="confirmPassword"
             type="password"
           />
         </label>
