@@ -9,14 +9,14 @@ import {
   } from "../consts";
   
   import axios from "axios";
-  import { useHistory } from "react-router-dom";
+
   
-  const urlBase = "http://localhost:5000/api"
+  const urlBase = "https://water-my-plants-tt14.herokuapp.com/"
 
   export const signupUser = (user) => (dispatch) => {
     dispatch({ type: REGISTER_USER_START });
     axios
-      .post(`${urlBase}/login`, user)
+      .post(`${urlBase}api/auth/register`, user)
       .then((res) => {
         dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data });
       })
@@ -35,7 +35,7 @@ import {
 
   
     axios
-      .post(`${urlBase}/login`, payload)
+      .post(`${urlBase}api/auth/login`, payload)
       .then((res) => {
         dispatch({
           type: LOGIN_USER_SUCCESS,
