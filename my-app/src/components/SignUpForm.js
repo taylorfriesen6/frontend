@@ -97,7 +97,7 @@ export default function SignUpForm({
             type="password"
           />
         </label>
-        <p>{errors.password}</p>
+        <p>{errors.confirmPassword}</p>
         <div>
           <button>Sign Up</button>
         </div>

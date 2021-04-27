@@ -14,9 +14,14 @@ const StyledHome = styled.div`
   box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
 `;
 
-// const StyledPika = styled.div`
-//     background-image: url(${props => props.img});
-// `;
+const StyledPika = styled.div`
+    width: 550px;
+    height: 550px;
+    margin: 0 0 0 6%;
+    background-image: url("https://i.pinimg.com/originals/00/20/e7/0020e7f57ca166466a1ec5e409928125.gif");
+    background-repeat: no-repeat;
+    
+`;
 
 const Home = () => {
 
@@ -25,9 +30,9 @@ const Home = () => {
                 <div class='home'>
                     <h1>WMP 💦</h1>
                     <p>keep up with your plants :D</p>
-                    <div>
-                        "pic of plants goes here"
-                    </div>
+                    <StyledPika>
+                        .
+                    </StyledPika>
                 </div>
             </StyledHome>
     )
