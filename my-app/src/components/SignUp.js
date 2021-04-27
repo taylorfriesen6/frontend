@@ -8,10 +8,6 @@ import { signupUser } from "../actions/index";
 import SignUpSchema from "./SignUpSchema";
 import { useHistory } from "react-router-dom";
 
-// import axios from 'axios'
-
-// import axios from 'axios'
-// import { useHistory } from 'react-router-dom';
 
 const initialFormValues = {
   username: "",
@@ -19,6 +15,8 @@ const initialFormValues = {
   lastname: "",
   email: "",
   password: "",
+  confirmPassowrd: "",
+  phone:"",
 };
 const initialFormErrors = {
   username: "",
@@ -26,6 +24,8 @@ const initialFormErrors = {
   lastname: "",
   email: "",
   password: "",
+  confirmPassowrd: "",
+  number:"",
 };
 const initialDisabled = true;
 
@@ -41,9 +41,10 @@ function SignUp({ error, signupUser }) {
       firstname: formValues.firstname.trim(),
       lastname: formValues.lastname.trim(),
       email: formValues.email.trim(),
-      password: formValues.firstname.trim(),
+      password: formValues.password.trim(),
+      phone: formValues.phone.trim(),
     };
-    // Post request towards the server
+  
     signupUser(signupSubmit);
     if (error) {
       setFormErrors();
@@ -54,7 +55,6 @@ function SignUp({ error, signupUser }) {
   };
 
   const inputChange = (name, value) => {
-    // Validating forum first then pluggin in the values
     yup
       .reach(SignUpSchema, name)
       .validate(value)
@@ -65,8 +65,8 @@ function SignUp({ error, signupUser }) {
         setFormErrors({ ...formErrors, [name]: err.errors[0] });
       });
 
-    // Plugging in values into FORMVALUES
-    setFormValues({
+
+  setFormValues({
       ...formValues,
       [name]: value,
     });

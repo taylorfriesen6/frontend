@@ -3,13 +3,14 @@ import styled from 'styled-components'
 
 //styling for loginform 
 const StyledLoginForm = styled.form`
-    color: ${pr => pr.theme.fontColor};
-    font-weight: 300;
-    background-color: ${pr => pr.theme.secondaryColor};
-    display: ${pr => pr.theme.display};
-    justify-content: ${pr => pr.theme.justifyContent};
-    flex-wrap: ${pr => pr.theme.flexWrap};
-    border-radius: ${pr => pr.theme.borderRadius};
+    position: absolute;
+    width: 570px;
+    height: 305px;
+    left: 435px;
+    top: 265px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
 
     h2{
     font-family: ${pr => pr.theme.fontFamily};
@@ -49,19 +50,19 @@ const LoginForm = (props) => {
 
   return (
     <StyledLoginForm className="loginformcontainer" onSubmit={onSubmit}>
-      <h2>Member Login</h2>
+      <h2>Login</h2>
       <div>
         <p>
           <label>
-            Username
+            Email
             <input
-              value={values.username}
+              value={values.email}
               onChange={onChange}
-              name="username"
+              name="email"
               type="text"
             />
           </label>
-          <span className="error">{errors.username}</span>
+          <span className="error">{errors.email}</span>
         </p>
         <p>
           <label>

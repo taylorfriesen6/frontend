@@ -22,14 +22,14 @@ const NavBar = ({isLoggedIn, userLogout}) => {
     return(
       <NavStyle>
       <div>
-        <TitleStyle>Plantsssss</TitleStyle>
+        <TitleStyle>Water My Plants</TitleStyle>
       </div>
       <LinksStyle>
         <div>
           <NavLink exact activeClassName="active" to="/">Home</NavLink>
         </div>
         <div>
-          <NavLink activeClassName="active" to="/dashboard">Dashboard</NavLink>
+          <NavLink activeClassName="active" to="/addplants">Add Plants</NavLink>
         </div>
         <div>
           <button onClick={handleLogout}>logout</button>
@@ -42,7 +42,7 @@ const NavBar = ({isLoggedIn, userLogout}) => {
   return (
     <NavStyle>
       <div>
-        <TitleStyle>Plantsssss</TitleStyle>
+        <TitleStyle>Water My Plants</TitleStyle>
       </div>
       <LinksStyle>
         <div>

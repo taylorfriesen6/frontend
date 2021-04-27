@@ -10,19 +10,12 @@ import { connect } from "react-redux";
 import { loginUser } from "../actions";
 
 
-//styling for Login function
+
 const StyledLogin = styled.div`
-  background-color: ${pr => pr.theme.lightestColor};
+  background: #E5E5E5;
 
 
 `
-const StyledLink =styled.div `
-    color: ${pr => pr.theme.fontColor};
-    white-space: ${pr => pr.theme.whiteSpace};
-    background-color: ${pr => pr.theme.lightestColor};
-
-  `
-  
 
 const initialFormValues = {
   username: "",
@@ -37,7 +30,6 @@ const initialDisabled = true;
 
 
 const Login = (props) => {
-
 
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -65,7 +57,7 @@ const Login = (props) => {
       password: formValues.password.trim(),
     };
 
-    props.history.push("/dashboard")
+    props.history.push("/collection")
 
     props.loginUser(loginSubmit);
     
@@ -79,7 +71,6 @@ const Login = (props) => {
     <StyledLogin className="login">
       
       <div>
-      
       <LoginForm
         values={formValues}
         change={inputChange}
@@ -87,11 +78,7 @@ const Login = (props) => {
         disabled={disabled}
         errors={formErrors}
       />
-
-      <StyledLink>
-        {props.error && <div style={{ color: "red" }}>{props.error}</div>}
-        <Link to="/">no log in thx</Link>
-      </StyledLink>
+      {props.error && <div style={{ color: "red" }}>{props.error}</div>}
       </div>
     </StyledLogin>
   );
