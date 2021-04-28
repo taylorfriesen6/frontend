@@ -27,6 +27,7 @@ const Login = (props) => {
   const [disabled, setDisabled] = useState(true)
 
   //still need to disable with if statement but v sleepy
+  const { push } = useHistory()
   
 
   const handleChanges = e => {
@@ -74,10 +75,9 @@ return(
       <div>
         <p>
           <label>
-            Email
             <input
               name="email"
-              placeholder="email@email.com"
+              placeholder="Email"
               type="email"
               value={loginValues.email}
               onChange={handleChanges}
@@ -87,10 +87,9 @@ return(
         </p>
         <p>
           <label>
-            Password
             <input
               name="password"
-              placeholder="password"
+              placeholder="Password"
               type="password"
               value={loginValues.password}
               onChange={handleChanges}
@@ -100,9 +99,15 @@ return(
 
         </p>
       </div>
-      <button type="submit">Log In</button>
+      <div className='bottom'>
+        <button type="submit">Log In</button>
+        <div className='btn-login'>
+              <h4>Don't have a account? </h4>
+              <button className='login' onClick={() => {push('/signup')}}>Sign Up</button>
+          </div>
 
-      {/* {formErrors && <div style={{ color: "red" }}>{formErrors}</div>} */}
+        {/* {formErrors && <div style={{ color: "red" }}>{formErrors}</div>} */}
+      </div>
     </StyledLoginForm>
   </StyledLogin>
 )
@@ -118,24 +123,98 @@ const StyledLoginForm = styled.form`
     height: 305px;
     left: 435px;
     top: 265px;
-
+    padding: 40px;
     background: #FFFFFF;
     box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
 
     h2{
-    font-family: ${pr => pr.theme.fontFamily};
-    white-space: ${pr => pr.theme.whiteSpace};
-    color: ${pr => pr.theme.fontColor};
-    font-weight: ${pr => pr.theme.fontWeight};
+      width: 490px;
+      height: 37px;
+      left: 475px;
+      top: 305px;
+      font-family: PT Serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 28px;
+      line-height: 37px;
+      color: #224229;
     }
-  input{
+
+    p{
+      width: 100%;
+      height: 23px;
+      left: 475px;
+      top: 362px;
+      font-family: PT Serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 17px;
+      line-height: 23px;
+      color: #224229;
+      border-bottom: 3px solid green;
+
     }
+
+
+
   button{
-    color: ${pr => pr.theme.fontColor};
-    white-space: ${pr => pr.theme.whiteSpace};
-    background-color: ${pr => pr.theme.primaryColor};
+    width: 232px;
+    height: 54px;
+    left: 475px;
+    top: 476px;
+    margin-top: 20px;
+    background: #548A60;
+    font-family: PT Serif;
+    font-style: normal;
+    font-weight: bold;
+    color: white;
+    font-size: 17px;
+    line-height: 23px;
+    text-align: center;
+    text-transform: uppercase;
   }
 
+  & h4{
+    width: 500px;
+    margin-top: 9px;
+  }
+
+  & .btn-login{
+    display: flex;
+    margin-top: 40px;
+    width: 245px;
+    height: 16px;
+    left: 720px;
+    top: 510px;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: right;
+    color: #B1B7B3;
+  }
+  & .bottom{
+    display: flex;
+    justify-content: center;
+  }
+  & .login{
+    background: none;
+    border: none;
+    padding-bottom: 80px;
+    margin-top: 10px;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: right;
+    color: #B1B7B3;
+
+    &:hover{
+      color: blue;
+    }
+  }
 span{
     color: ${pr => pr.theme.errorColor};
     white-space: ${pr => pr.theme.whiteSpace};

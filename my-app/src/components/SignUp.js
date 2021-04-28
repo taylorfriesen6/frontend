@@ -7,16 +7,16 @@ import styled from 'styled-components'
 
 
 const initialFormValues = {
-  username: "",
   name: "",
   email: "",
   password: "",
   confirmPassword: "",
+  
   phone:"",
 };
 
 const initialFormErrors = {
-  username: "",
+  
   name: "",
   email: "",
   password: "",
@@ -64,10 +64,11 @@ const SignUp = () => {
 
   const submitForm = (e) => {
     e.preventDefault()
+    const data = {name: formValues.name, email: formValues.email, password: formValues.password, phone: formValues.phone,}
     axios
-    .post("https://water-my-plants-tt14.herokuapp.com/api/auth/register", formValues)
-    .then((res) => {
-      console.log("signup res", res)
+    .post("https://water-my-plants-tt14.herokuapp.com/api/auth/register", data)
+    .then((resObj) => {
+      console.log("signup res", resObj)
       history.push("/")
       //route to plant collection
     })
@@ -134,7 +135,7 @@ const SignUp = () => {
             name="confirmPassword"
             placeholder="confirm password"
             type="password"
-            value={formValues.password}
+            value={formValues.confirmPassword}
             onChange={handleChanges}
           />
         </label>

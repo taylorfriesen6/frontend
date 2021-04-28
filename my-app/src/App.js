@@ -21,7 +21,6 @@ function App() {
       <Route path="/signup" component={SignUp} />
       <Route path='/collection' component={PlantCollection} />
       <Route path="/no-plants" component={NoPlants} />
-      <Route path="/individual-plant" component={IndividualPlant} />
     </div>
   );
 }
