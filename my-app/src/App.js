@@ -13,7 +13,7 @@ import IndividualPlant from './components/IndividualPlant';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <NavBar />
       <Route path="/addplant" component={SpeciesList} />
       <Route exact path="/" component={Home} />
