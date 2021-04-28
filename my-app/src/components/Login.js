@@ -3,9 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components'
 import { Link, useHistory } from 'react-router-dom'
 import LoginSchema from "./LoginSchema";
-
 import axios from 'axios'
-
 
 
 const initialFormValues = {
