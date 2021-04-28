@@ -1,50 +1,86 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import React, {useState} from 'react';
+import {axiosWithAuth} from '../auth/axiosWithAuth';
+import styled from 'styled-components';
 import { useHistory } from 'react-router';
+
+const EditPlantContainer = styled.div`
+    width: 275px;
+    height: 100%;
+    padding: 20px;
+`;
+
+const SubmitChanges = styled.button`
+    width: 200px;
+    height: 44px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #548A60;
+`;
+const DeletePlant = styled.button`
+    width: 200px;
+    height: 44px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #b23a3a;
+`;
 
 const initialFormValues = {
     plant_nickname: '',
     water_day: 0,
-    notes: ''
+    notes: '',
+    plant_location: '',
+    species_id: 0
 };
+//user_plant_id for specific plant
 
 const EditPlant = (plants) => {
+    const {plant, abracadabra, setPlants, setTakeMeBack, takeMeBack} = plants;
     const [formValues,
-         setFormValues] = useState(initialFormValues);
-
-    const {plant} = plants;
-
-    const history = useHistory();
+         setFormValues] = useState({...initialFormValues,
+             user_plant_id: plant.user_plant_id});
 
     const changer = (e) => {
         setFormValues({...formValues,
              [e.target.name]: e.target.value});
     };
 
-    const deleter =  () => {
-        axios.delete('https://water-my-plants-tt14.herokuapp.com/user/api/userplants')
-        .then(dundundun => {
-            console.log('deletion success from EditPlant', dundundun);
-            history.push('/collection');
-        })
-        .catch(err => {
-            console.error('deletion error on EditPlant', err);
-        });
+    const deleter =  (e) => {
+        e.preventDefault();
+
+        const rightPlant = {user_plant_id: plant.user_plant_id};
+        console.log('plantuserplantid', rightPlant);
+
+        axiosWithAuth()
+        .delete(`/api/userplants`, {data: rightPlant})
+            .then(dundundun => {
+                console.log('deletion success from EditPlant', dundundun);
+                abracadabra();
+            })
+            .catch(err => {
+                console.error('deletion error on EditPlant', err);
+            });
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
+
         const updatedPlant = {
+            user_plant_id: plant.user_plant_id,
             plant_nickname: formValues.plant_nickname,
             water_day: Number(formValues.water_day),
-            notes: formValues.notes
+            notes: formValues.notes,
+            plant_location: formValues.plant_location,
+            species_id: plant.species_id
         };
-        axios.put
-        ('https://water-my-plants-tt14.herokuapp.com/user/api/userplants',
-         updatedPlant)
+
+        console.log('plantuserplantid', plant.user_plant_id);
+
+        axiosWithAuth()
+        .put(`/api/userplants/`, updatedPlant)
         .then(update => {
             console.log('update on EditPlant:', update);
-            history.push('/collection');
+            abracadabra();
+            setTakeMeBack(!takeMeBack);
         })
         .catch(err => {
             console.error('error on EditPlant', err);
@@ -52,14 +88,8 @@ const EditPlant = (plants) => {
     };
 
     return (
-        <div>
+        <EditPlantContainer>
             <h1>You've traveled far.... waterer</h1>
-            <div className='staticPlantValues'>
-                {plant.plant_image}
-            <br>{plant.plant_name}</br>
-            <br>{plant.plant_nickname}</br>
-            <br>{plant.water_day}</br>
-            </div>
             <div className='dynamicPlantValues'>
                 
                 <form>
@@ -74,7 +104,7 @@ const EditPlant = (plants) => {
                        </input>
 
 
-                    <label htmlFot='water_day'><h3>Start Watering</h3></label>
+                    <label htmlFor='water_day'><h3>Start Watering</h3></label>
                         <select
                          name="water_day"
                           id="water_day"
@@ -98,17 +128,25 @@ const EditPlant = (plants) => {
                     name = 'notes'
                     placeholder = {plant.notes}>
                        </input>
+                    <label htmlFor='plant_location'><h3>PLANT LOCATION</h3></label>
+                    <input 
+                    type = 'text'
+                    value = {formValues.plant_location}
+                    onChange = {changer}
+                    name = 'plant_location'
+                    placeholder = {plant.plant_location}>
+                       </input>
                     
 
                     <div className='EditButtons'>
-                        <button onClick={onSubmit}>SAVE CHANGES
-                        </button>
-                        <button onClick={deleter}>DELTE FROM COLLECTION
-                        </button>
+                        <SubmitChanges onClick={onSubmit}>SAVE CHANGES
+                        </SubmitChanges>
+                        <DeletePlant onClick={deleter}>DELTE FROM COLLECTION
+                        </DeletePlant>
                     </div>
                 </form>
             </div>
-        </div>
+        </EditPlantContainer>
     );
 };
 
