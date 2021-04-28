@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import NoPlants from './NoPlants'
 import IndividualPlant from './IndividualPlant'
-import EditPlant from './EditPlant'
 import styled from 'styled-components'
 import '../App.css'
 import { axiosWithAuth } from '../auth/axiosWithAuth'
@@ -148,14 +147,9 @@ const Container = styled.div`
 // ]
 
 const PlantCollection = () => {
-    const [edit, setEdit] = useState(false)
     const { push } = useHistory()
-
-    const abracadabra = () => {
-        setEdit(!edit);
-    };
-
     const [plants, setPlants] = useState([])
+    const [takeMeBack, setTakeMeBack] = useState(false)
 
     useEffect(() => {
         axiosWithAuth()
@@ -167,7 +161,7 @@ const PlantCollection = () => {
             .catch((err) => {
                 console.log(err)
             })
-    }, [])
+    }, [takeMeBack])
 
     return(
         <div className='plants-container'>
@@ -175,9 +169,8 @@ const PlantCollection = () => {
             {plants.length !== 0 && <><h2>My Plants</h2> <button onClick={() => {push('/addplant')}}>Add Plant</button> </>}
 
             <Container className='card'>
-                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant} reveal={abracadabra}/>)}
+                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant} setPlants={setPlants} setTakeMeBack={setTakeMeBack} takeMeBack={takeMeBack}/>)}
             </Container>
-            {edit && <EditPlant plant={plants} ></EditPlant>}
         </div>
     )
 }
