@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import { NavLink, useHistory } from 'react-router-dom'
 import { connect } from "react-redux";
-import { userLogout } from '../actions/index'
+
 
 
 const NavBar = ({isLoggedIn, userLogout}) => {
@@ -12,7 +12,7 @@ const NavBar = ({isLoggedIn, userLogout}) => {
   const handleLogout = (e) => {
     e.preventDefault()
     
-    userLogout()
+
     history.push('/')
     console.log('lgout')
 
@@ -59,14 +59,8 @@ const NavBar = ({isLoggedIn, userLogout}) => {
   );
 };
 
-const mapStateToProps = state => {
-  console.log(state)
-  return({
-    isLoggedIn: state.userReducer.isLoggedIn
-  })
-}
 
-export default connect(mapStateToProps,{userLogout})(NavBar);
+export default NavBar;
 
 
 const NavStyle = styled.nav`
