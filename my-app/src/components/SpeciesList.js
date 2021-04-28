@@ -5,6 +5,14 @@ import styled from 'styled-components';
 //Component Import
 import SpeciesCard from './SpeciesCard';
 
+//Styling
+const PlantCardContainer = styled.div`
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+`
+
 const SpeciesList = () => {
     const [ species, setSpecies ] = useState([]);
     const [ loading, setIsLoading ] = useState(true);
@@ -26,15 +34,17 @@ const SpeciesList = () => {
                 <h2>Add A Plant</h2>
                 <p>Cancel X</p>
             </div>
-            {
-                loading
-                ? "Loading Plant Species..." 
-                : species.map(plant => {
-                    return (
-                        <SpeciesCard key={plant.species_id} plant={plant}/>
-                    )
-                })
-            }
+            <PlantCardContainer>
+                {
+                    loading
+                    ? "Loading Plant Species..." 
+                    : species.map(plant => {
+                        return (
+                            <SpeciesCard key={plant.species_id} plant={plant}/>
+                        )
+                    })
+                }
+            </PlantCardContainer>
         </div>
     )
 };

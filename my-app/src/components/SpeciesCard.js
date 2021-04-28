@@ -2,11 +2,13 @@ import axios from 'axios';
 import react, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import AddPlant from './AddPlant';
+
 //STYLING
 const CardContainer = styled.div`
     width: 270px;
     height: 411px;
-    margin-bottom: 40px;
+    margin: 20px;
     box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
 `
 const PlantImage = styled.img`
@@ -44,20 +46,31 @@ const WaterSchedule = styled.p`
     font-family: serif; //TODO: change to PT Serif
     margin-top: 3px;
 `
+const AddPlantDiv = styled.div`
+    display: none;
+
+    .active {
+        display: block;
+    }
+`
 
 const SpeciesCard = (props) => {
-    console.log(props.plant)
-    const { plant_image, plant_name, plant_scientific_name, water_schedule } = props.plant;
+    const [ active, setActive ] = useState(false);
+    const { plant_image, plant_name, plant_scientific_name, species_id, water_schedule } = props.plant;
+
     return (
-        <CardContainer>
-            <PlantImage src={plant_image} alt={plant_name} />
-            <PlantDetails>
-                <PlantName>{plant_name}</PlantName>
-                <PlantSpecies>{plant_scientific_name}</PlantSpecies>
-                <h3>Watering Schedule</h3>
-                <WaterSchedule>{water_schedule}</WaterSchedule>
-            </PlantDetails>
-        </CardContainer>
+        <>
+            <CardContainer onClick={() => setActive(!active)}>
+                <PlantImage src={plant_image} alt={plant_name} />
+                <PlantDetails>
+                    <PlantName>{plant_name}</PlantName>
+                    <PlantSpecies>{plant_scientific_name}</PlantSpecies>
+                    <h3>Watering Schedule</h3>
+                    <WaterSchedule>{water_schedule}</WaterSchedule>
+                </PlantDetails>
+            </CardContainer>
+            {active && <AddPlant species_id={species_id} />}
+        </>
     )
 }
 
