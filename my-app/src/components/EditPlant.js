@@ -51,14 +51,14 @@ const EditPlant = (plants) => {
         console.log('plantuserplantid', rightPlant);
 
         axiosWithAuth()
-        .delete(`/api/userplants`, rightPlant)
-        .then(dundundun => {
-            console.log('deletion success from EditPlant', dundundun);
-            abracadabra();
-        })
-        .catch(err => {
-            console.error('deletion error on EditPlant', err);
-        });
+        .delete(`/api/userplants`, {data: rightPlant})
+            .then(dundundun => {
+                console.log('deletion success from EditPlant', dundundun);
+                abracadabra();
+            })
+            .catch(err => {
+                console.error('deletion error on EditPlant', err);
+            });
     }
 
     const onSubmit = (e) => {
