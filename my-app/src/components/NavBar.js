@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
 import { NavLink, useHistory } from 'react-router-dom'
-import { connect } from "react-redux";
 
 
 
