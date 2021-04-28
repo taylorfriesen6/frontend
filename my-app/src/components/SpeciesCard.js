@@ -6,10 +6,14 @@ import AddPlant from './AddPlant';
 
 //STYLING
 const CardContainer = styled.div`
+    margin: 20px;  
+    box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
+    display: flex;
+    flex-wrap: nowrap;
+`
+const SpeciesContainer = styled.div`
     width: 270px;
     height: 411px;
-    margin: 20px;
-    box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
 `
 const PlantImage = styled.img`
     width: 270px;
@@ -46,21 +50,14 @@ const WaterSchedule = styled.p`
     font-family: serif; //TODO: change to PT Serif
     margin-top: 3px;
 `
-const AddPlantDiv = styled.div`
-    display: none;
-
-    .active {
-        display: block;
-    }
-`
 
 const SpeciesCard = (props) => {
     const [ active, setActive ] = useState(false);
     const { plant_image, plant_name, plant_scientific_name, species_id, water_schedule } = props.plant;
 
     return (
-        <>
-            <CardContainer onClick={() => setActive(!active)}>
+        <CardContainer>
+            <SpeciesContainer onClick={() => setActive(!active)}>
                 <PlantImage src={plant_image} alt={plant_name} />
                 <PlantDetails>
                     <PlantName>{plant_name}</PlantName>
@@ -68,9 +65,9 @@ const SpeciesCard = (props) => {
                     <h3>Watering Schedule</h3>
                     <WaterSchedule>{water_schedule}</WaterSchedule>
                 </PlantDetails>
-            </CardContainer>
+            </SpeciesContainer>
             {active && <AddPlant species_id={species_id} />}
-        </>
+        </CardContainer>
     )
 }
 
