@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../App.css'
 import styled from 'styled-components'
+import EditPlant from './EditPlant'
 
 const Card = styled.div `
 width: 270px;
@@ -10,7 +11,8 @@ box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
 `
 
 const IndividualPlant = (props) => {
-    const {plant} = props
+    const {plant, reveal} = props
+
 
     return (
         <Card>
@@ -30,6 +32,7 @@ const IndividualPlant = (props) => {
 
                 <h3>Notes</h3>
                 <p>{plant.notes}</p>
+                <button onClick ={reveal}> Edit this verdure</button>
             </div>
         </Card>
     )
