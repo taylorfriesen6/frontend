@@ -59,7 +59,7 @@ const Login = (props) => {
       console.log("login resp", res, res.data)
       //setLoginValues(initialFormValues)
       localStorage.setItem("token", res.data.token)
-      localStorage.setItem("userId", res.data.user.user_id )
+      // localStorage.setItem("userId", res.data.user.user_id )
       history.push("/")
       
       }
