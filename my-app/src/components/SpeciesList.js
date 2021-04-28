@@ -2,6 +2,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+//Component Import
+import SpeciesCard from './SpeciesCard';
+
 const SpeciesList = () => {
     const [ species, setSpecies ] = useState([]);
     const [ loading, setIsLoading ] = useState(true);
@@ -28,7 +31,7 @@ const SpeciesList = () => {
                 ? "Loading Plant Species..." 
                 : species.map(plant => {
                     return (
-                        <div>{plant.plant_name}</div>
+                        <SpeciesCard key={plant.species_id} plant={plant}/>
                     )
                 })
             }
