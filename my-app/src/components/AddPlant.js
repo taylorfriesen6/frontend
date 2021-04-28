@@ -36,7 +36,7 @@ const AddPlant = (props) => {
         }
   
         axiosWithAuth()
-            .post(`/userplants`, newPlantData)
+            .post(`/api/userplants`, newPlantData)
             .then(res => {
                 console.log(res)
                 //TODO: history push to userplants
