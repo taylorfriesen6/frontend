@@ -6,6 +6,8 @@ import SignUp from "./components/SignUp";
 import PlantCollection from './components/PlantCollection'
 import  NavBar  from "./components/NavBar";
 import { Route } from "react-router-dom";
+import NoPlants from './components/NoPlants';
+import IndividualPlant from './components/IndividualPlant';
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <Route path='/collection' component={PlantCollection} />
+      <Route path="/no-plants" component={NoPlants} />
+      <Route path="/individual-plant" component={IndividualPlant} />
     </div>
   );
 }
