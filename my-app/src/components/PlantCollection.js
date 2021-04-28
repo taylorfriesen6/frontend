@@ -10,10 +10,11 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 1440px;
+    width: 80%;
     height: 550px;
     margin: auto;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 40px;
 
     & h3 {
         font-family: PT Serif;
@@ -24,130 +25,139 @@ const Container = styled.div`
         color: green;
     }
 
+    & img{
+        object-fit:cover;
+        width:100%;
+        height: auto;
+    }
+
+
 `
 
-// // dummyUserPlantData
-// const plants  = [
-//     {
-//         user_plant_id: 1,
-//         plant_nickname: "My favorite plant",
-//         plant_location: "front door",
-//         water_day: 2,
-//         notes: "Sally gave me this plant. I love it!",
-//         species_id: 2,
-//         plant_name: "Love fern",
-//         plant_scientific_name: "Fernius Lovernius",
-//         water_schedule: "Twice Per Week",
-//         plant_image: "http://url.com/image.jpg"
-//     },
+// dummyUserPlantData
+const plants  = [
+    {
+        user_plant_id: 1,
+        plant_nickname: "My favorite plant",
+        plant_location: "front door",
+        water_day: 2,
+        notes: "Sally gave me this plant. I love it!",
+        species_id: 2,
+        plant_name: "Love fern",
+        plant_scientific_name: "Fernius Lovernius",
+        water_schedule: "Twice Per Week",
+        plant_image: "http://url.com/image.jpg"
+    },
 
-//     {
-//         user_plant_id: 2,
-//         plant_nickname: "My favorite plant",
-//         plant_location: "front door",
-//         water_day: 2,
-//         notes: "Sally gave me this plant. I love it!",
-//         species_id: 3,
-//         plant_name: "Love fern",
-//         plant_scientific_name: "Fernius Lovernius",
-//         water_schedule: "Twice Per Week",
-//         plant_image: "http://url.com/image.jpg"
-//     },
+    {
+        user_plant_id: 2,
+        plant_nickname: "My favorite plant",
+        plant_location: "front door",
+        water_day: 2,
+        notes: "Sally gave me this plant. I love it!",
+        species_id: 3,
+        plant_name: "Love fern",
+        plant_scientific_name: "Fernius Lovernius",
+        water_schedule: "Twice Per Week",
+        plant_image: "http://url.com/image.jpg"
+    },
 
-//     {
-//         user_plant_id: 2,
-//         plant_nickname: "My favorite plant",
-//         plant_location: "front door",
-//         water_day: 2,
-//         notes: "Sally gave me this plant. I love it!",
-//         species_id: 3,
-//         plant_name: "Love fern",
-//         plant_scientific_name: "Fernius Lovernius",
-//         water_schedule: "Twice Per Week",
-//         plant_image: "http://url.com/image.jpg"
-//     },
+    {
+        user_plant_id: 2,
+        plant_nickname: "My favorite plant",
+        plant_location: "front door",
+        water_day: 2,
+        notes: "Sally gave me this plant. I love it!",
+        species_id: 3,
+        plant_name: "Love fern",
+        plant_scientific_name: "Fernius Lovernius",
+        water_schedule: "Twice Per Week",
+        plant_image: "https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576"
+    },
 
-//     {
-//         user_plant_id: 2,
-//         plant_nickname: "My favorite plant",
-//         plant_location: "front door",
-//         water_day: 2,
-//         notes: "Sally gave me this plant. I love it!",
-//         species_id: 3,
-//         plant_name: "Love fern",
-//         plant_scientific_name: "Fernius Lovernius",
-//         water_schedule: "Twice Per Week",
-//         plant_image: "http://url.com/image.jpg"
-//     },
+    {
+        user_plant_id: 2,
+        plant_nickname: "My favorite plant",
+        plant_location: "front door",
+        water_day: 2,
+        notes: "Sally gave me this plant. I love it!",
+        species_id: 3,
+        plant_name: "Love fern",
+        plant_scientific_name: "Fernius Lovernius",
+        water_schedule: "Twice Per Week",
+        plant_image: "https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576"
+    },
 
-//     {
-//         user_plant_id: 2,
-//         plant_nickname: "My favorite plant",
-//         plant_location: "front door",
-//         water_day: 2,
-//         notes: "Sally gave me this plant. I love it!",
-//         species_id: 3,
-//         plant_name: "Love fern",
-//         plant_scientific_name: "Fernius Lovernius",
-//         water_schedule: "Twice Per Week",
-//         plant_image: "http://url.com/image.jpg"
-//     },
+    {
+        user_plant_id: 2,
+        plant_nickname: "My favorite plant",
+        plant_location: "front door",
+        water_day: 2,
+        notes: "Sally gave me this plant. I love it!",
+        species_id: 3,
+        plant_name: "Love fern",
+        plant_scientific_name: "Fernius Lovernius",
+        water_schedule: "Twice Per Week",
+        plant_image: "http://url.com/image.jpg"
+    },
 
-//     {
-//         user_plant_id: 2,
-//         plant_nickname: "My favorite plant",
-//         plant_location: "front door",
-//         water_day: 2,
-//         notes: "Sally gave me this plant. I love it!",
-//         species_id: 3,
-//         plant_name: "Love fern",
-//         plant_scientific_name: "Fernius Lovernius",
-//         water_schedule: "Twice Per Week",
-//         plant_image: "http://url.com/image.jpg"
-//     },
+    {
+        user_plant_id: 2,
+        plant_nickname: "My favorite plant",
+        plant_location: "front door",
+        water_day: 2,
+        notes: "Sally gave me this plant. I love it!",
+        species_id: 3,
+        plant_name: "Love fern",
+        plant_scientific_name: "Fernius Lovernius",
+        water_schedule: "Twice Per Week",
+        plant_image: "http://url.com/image.jpg"
+    },
 
-//     {
-//         user_plant_id: 2,
-//         plant_nickname: "My favorite plant",
-//         plant_location: "front door",
-//         water_day: 2,
-//         notes: "Sally gave me this plant. I love it!",
-//         species_id: 3,
-//         plant_name: "Love fern",
-//         plant_scientific_name: "Fernius Lovernius",
-//         water_schedule: "Twice Per Week",
-//         plant_image: "http://url.com/image.jpg"
-//     },
+    {
+        user_plant_id: 2,
+        plant_nickname: "My favorite plant",
+        plant_location: "front door",
+        water_day: 2,
+        notes: "Sally gave me this plant. I love it!",
+        species_id: 3,
+        plant_name: "Love fern",
+        plant_scientific_name: "Fernius Lovernius",
+        water_schedule: "Twice Per Week",
+        plant_image: "http://url.com/image.jpg"
+    },
 
-//     {
-//         user_plant_id: 2,
-//         plant_nickname: "My favorite plant",
-//         plant_location: "front door",
-//         water_day: 2,
-//         notes: "Sally gave me this plant. I love it!",
-//         species_id: 3,
-//         plant_name: "Love fern",
-//         plant_scientific_name: "Fernius Lovernius",
-//         water_schedule: "Twice Per Week",
-//         plant_image: "http://url.com/image.jpg"
-//     },
+    {
+        user_plant_id: 2,
+        plant_nickname: "My favorite plant",
+        plant_location: "front door",
+        water_day: 2,
+        notes: "Sally gave me this plant. I love it!",
+        species_id: 3,
+        plant_name: "Love fern",
+        plant_scientific_name: "Fernius Lovernius",
+        water_schedule: "Twice Per Week",
+        plant_image: "http://url.com/image.jpg"
+    },
 
-//     {
-//         user_plant_id: 2,
-//         plant_nickname: "My favorite plant",
-//         plant_location: "front door",
-//         water_day: 2,
-//         notes: "Sally gave me this plant. I love it!",
-//         species_id: 3,
-//         plant_name: "Love fern",
-//         plant_scientific_name: "Fernius Lovernius",
-//         water_schedule: "Twice Per Week",
-//         plant_image: "http://url.com/image.jpg"
-//     },
-// ]
+    {
+        user_plant_id: 2,
+        plant_nickname: "My favorite plant",
+        plant_location: "front door",
+        water_day: 2,
+        notes: "Sally gave me this plant. I love it!",
+        species_id: 3,
+        plant_name: "Love fern",
+        plant_scientific_name: "Fernius Lovernius",
+        water_schedule: "Twice Per Week",
+        plant_image: "http://url.com/image.jpg"
+    },
+]
+
 
 const PlantCollection = () => {
     const { push } = useHistory()
+
     const [plants, setPlants] = useState([])
     const [takeMeBack, setTakeMeBack] = useState(false)
 
