@@ -27,13 +27,15 @@
 .App-link {
   color: #61dafb;
 }
-.h3 {
+
+h3 {
   font-family: PT Serif;
   font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 24px;
-  color: green;
+  font-weight: 800;
+  font-size: 10px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #548A60;
 }
 
 @keyframes App-logo-spin {
