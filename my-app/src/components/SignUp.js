@@ -1,100 +1,163 @@
 import * as yup from "yup";
-
 import React, { useEffect, useState } from "react";
-
-import SignUpForm from "./SignUpForm";
-import { connect } from "react-redux";
-import { signupUser } from "../actions/index";
 import SignUpSchema from "./SignUpSchema";
 import { useHistory } from "react-router-dom";
+import axios from 'axios'
+import styled from 'styled-components'
 
 
 const initialFormValues = {
   username: "",
-  firstname: "",
-  lastname: "",
+  name: "",
   email: "",
   password: "",
-  confirmPassowrd: "",
+  confirmPassword: "",
   phone:"",
 };
+
 const initialFormErrors = {
   username: "",
-  firstname: "",
-  lastname: "",
+  name: "",
   email: "",
   password: "",
-  confirmPassowrd: "",
+  confirmPassword: "",
   number:"",
 };
-const initialDisabled = true;
 
-function SignUp({ error, signupUser }) {
+
+const SignUp = () => {
+
   const history = useHistory();
+
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
-  const [disabled, setDisabled] = useState(initialDisabled);
-
-  const formSubmit = () => {
-    const signupSubmit = {
-      username: formValues.username.trim(),
-      firstname: formValues.firstname.trim(),
-      lastname: formValues.lastname.trim(),
-      email: formValues.email.trim(),
-      password: formValues.password.trim(),
-      phone: formValues.phone.trim(),
-    };
-  
-    signupUser(signupSubmit);
-    if (error) {
-      setFormErrors();
-      setFormErrors({ ...formErrors, [error.name]: error.message });
-    } else {
-      history.push("/login");
-    }
-  };
-
-  const inputChange = (name, value) => {
-    yup
-      .reach(SignUpSchema, name)
-      .validate(value)
-      .then(() => {
-        setFormErrors({ ...formErrors, [name]: "" });
-      })
-      .catch((err) => {
-        setFormErrors({ ...formErrors, [name]: err.errors[0] });
-      });
-
-
-  setFormValues({
-      ...formValues,
-      [name]: value,
-    });
-  };
+  const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    SignUpSchema.isValid(formValues).then((valid) => setDisabled(!valid));
-  }, [formValues]);
+    if(formValues.password === formValues.confirmPassword) {
+      SignUpSchema.isValid(formValues).then(valid => setDisabled(!valid))
+    } else {
+      setDisabled(true)
+    }
+  }, [formValues])
+ 
+  const handleChanges = e => {
+    yup.reach(SignUpSchema, e.target.name)
+      .validate(e.target.value)
+      .then(() => {
+        setFormErrors({
+          ...formErrors,
+          [e.target.name]: ''
+        })
+      })
+      .catch(err => {
+        setFormErrors({
+          ...formErrors,
+          [e.target.name]: err.errors[0]
+        })
+      })
+      setFormValues({
+        ...formValues,
+        [e.target.name]: e.target.value
+      })
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault()
+    axios
+    .post("https://water-my-plants-tt14.herokuapp.com/api/auth/register", formValues)
+    .then((res) => {
+      console.log("signup res", res)
+      history.push("/")
+      //route to plant collection
+    })
+    .catch(err => console.log({err}))
+  }
 
   return (
     <div className="signup">
-      <h1></h1>
+    <StyledSignUpForm className="signupformcontainer" onSubmit={submitForm}>
+      <h2>Sign Up</h2>
+      <div>
 
-      <SignUpForm
-        values={formValues}
-        change={inputChange}
-        submit={formSubmit}
-        disabled={disabled}
-        errors={formErrors}
-      />
+        <label>
+          Name
+          <input
+            name="name"
+            placeholder="name"
+            type="text"
+            value={formValues.name}
+            onChange={handleChanges}
+          />
+        </label>
+        <p>{formErrors.name}</p>
+
+        <label>
+          Phone Number
+          <input
+            name="phone"
+            placeholder="phone number"
+            type="text"
+            value={formValues.phone}
+            onChange={handleChanges}
+          />
+        </label>
+        <p>{formErrors.phone}</p>
+
+        <label>
+          Email
+          <input
+            name="email"
+            placeholder="email@email.com"
+            type="text"
+            value={formValues.email}
+            onChange={handleChanges}
+          />
+        </label>
+        <p>{formErrors.email}</p>
+
+        <label>
+          Password
+          <input
+            name="password"
+            placeholder="password"
+            type="password"
+            value={formValues.password}
+            onChange={handleChanges}
+          />
+        </label>
+        <p>{formErrors.password}</p>
+
+        <label>
+          Confirm Password
+          <input
+            name="confirmPassword"
+            placeholder="confirm password"
+            type="password"
+            value={formValues.password}
+            onChange={handleChanges}
+          />
+        </label>
+        <p>{formErrors.confirmPassword}</p>
+        <div>
+          <button type="submit">Sign Up</button>
+        </div>
+      </div>
+    </StyledSignUpForm>
     </div>
   );
 }
 
-const mapStateToProps = ({ userReducer }) => {
-  return {
-    error: userReducer.error,
-  };
-};
+const StyledSignUpForm = styled.form`
+  position: absolute;
+  width: 570px;
+  height: 589px;
+  left: 435px;
+  top: 265px;
 
-export default connect(mapStateToProps, { signupUser })(SignUp);
+  background: #FFFFFF;
+  box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
+  `;
+
+
+export default SignUp;
