@@ -51,7 +51,12 @@ box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
 `
 
 const IndividualPlant = (props) => {
-    const {plant, reveal} = props
+    const {plant, setPlants, setTakeMeBack, takeMeBack} = props
+    const [edit, setEdit] = useState(false)
+
+    const abracadabra = () => {
+        setEdit(!edit);
+    };
 
 
     return (
@@ -72,8 +77,9 @@ const IndividualPlant = (props) => {
 
                 <h3>Notes</h3>
                 <p>{plant.notes}</p>
-                <button onClick ={reveal}> Edit this verdure</button>
+                <button onClick ={abracadabra}> Edit this verdure</button>
             </div>
+                {edit && <EditPlant plant={plant} abracadabra={abracadabra} setPlants={setPlants} setTakeMeBack={setTakeMeBack} takeMeBack={takeMeBack}></EditPlant>}
         </Card>
     )
 }

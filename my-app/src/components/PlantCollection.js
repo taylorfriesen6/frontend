@@ -156,13 +156,10 @@ const plants  = [
 
 
 const PlantCollection = () => {
-
-
     const { push } = useHistory()
-    // const [plants, setPlants] = useState([])
-
 
     const [plants, setPlants] = useState([])
+    const [takeMeBack, setTakeMeBack] = useState(false)
 
     useEffect(() => {
         axiosWithAuth()
@@ -174,7 +171,7 @@ const PlantCollection = () => {
             .catch((err) => {
                 console.log(err)
             })
-    }, [])
+    }, [takeMeBack])
 
     return(
         <div className='plants-container'>
@@ -182,7 +179,7 @@ const PlantCollection = () => {
             {plants.length !== 0 && <><h2>My Plants</h2> <button onClick={() => {push('/addplant')}}>Add Plant</button> </>}
 
             <Container className='card'>
-                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant}/>)}
+                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant} setPlants={setPlants} setTakeMeBack={setTakeMeBack} takeMeBack={takeMeBack}/>)}
             </Container>
         </div>
     )
