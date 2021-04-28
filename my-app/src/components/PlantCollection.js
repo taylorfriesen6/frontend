@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import NoPlants from './NoPlants'
 import IndividualPlant from './IndividualPlant'
+import EditPlant from './EditPlant'
 import styled from 'styled-components'
 import '../App.css'
 
@@ -147,8 +148,12 @@ const plants  = [
 ]
 
 const PlantCollection = () => {
-
+    const [edit, setEdit] = useState(false)
     const { push } = useHistory()
+
+    const abracadabra = () => {
+        setEdit(!edit);
+    };
     // const [plants, setPlants] = useState([])
 
     // useEffect(() => {
@@ -169,8 +174,9 @@ const PlantCollection = () => {
             {plants.length !== 0 && <><h2>My Plants</h2> <button onClick={() => {push('/plants/new')}}>Add Plant</button> </>}
 
             <Container className='card'>
-                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant}/>)}
+                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant} reveal={abracadabra}/>)}
             </Container>
+            {edit && <EditPlant plant={plants} ></EditPlant>}
         </div>
     )
 }
