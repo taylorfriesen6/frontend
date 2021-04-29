@@ -59,6 +59,9 @@ const NavBar = ({isLoggedIn, userLogout}) => {
         <div>
           <NavLink activeClassName="active" to="/collection">My Plants</NavLink>
         </div>
+        <div>
+          <NavLink activeClassName="active" to="/profile">Profile</NavLink>
+        </div>
       </LinksStyle>
     </NavStyle>
   );

@@ -95,8 +95,6 @@ const Login = (props) => {
               onChange={handleChanges}
             />
           </label>
-
-          {<p>Errors.password</p>}
         
 
        
