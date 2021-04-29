@@ -27,6 +27,7 @@ function App() {
       <ProtectedRoute path="/addplant" component={SpeciesList} />
       <ProtectedRoute path="/no-plants" component={NoPlants} />
       <ProtectedRoute path="/individual-plant" component={IndividualPlant} />
+
     </div>
   );
 }
