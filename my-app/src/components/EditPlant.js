@@ -139,10 +139,12 @@ const EditPlant = (plants) => {
                     
 
                     <div className='EditButtons'>
-                        <SubmitChanges onClick={onSubmit}>SAVE CHANGES
-                        </SubmitChanges>
-                        <DeletePlant onClick={deleter}>DELTE FROM COLLECTION
-                        </DeletePlant>
+
+                        <button onClick={onSubmit}>SAVE CHANGES
+                        </button>
+                        <button onClick={deleter}>DELETE FROM COLLECTION
+                        </button>
+
                     </div>
                 </form>
             </div>

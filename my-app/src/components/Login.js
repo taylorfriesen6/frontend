@@ -26,9 +26,15 @@ const Login = (props) => {
   const [formErrors, setFormErrors] = useState(initialFormErrors)
   const [disabled, setDisabled] = useState(true)
 
-  //still need to disable with if statement but v sleepy
+
+  useEffect(() => {
+    LoginSchema.isValid(loginValues).then((valid) => {
+      setDisabled(!valid)
+    })
+  }, [loginValues])
+//
   const { push } = useHistory()
-  
+
 
   const handleChanges = e => {
     yup.reach(LoginSchema, e.target.name)
@@ -59,8 +65,8 @@ const Login = (props) => {
       //setLoginValues(initialFormValues)
       localStorage.setItem("token", res.data.token)
       // localStorage.setItem("userId", res.data.user.user_id )
-      history.push("/")
-      
+      history.push("/collection")
+
       }
       
       )
@@ -73,7 +79,7 @@ return(
   onSubmit={submitForm}>
       <h2>Login</h2>
       <div>
-        <p>
+        
           <label>
             <input
               name="email"
@@ -83,9 +89,9 @@ return(
               onChange={handleChanges}
             />
           </label>
-          {/* {formErrors.email ? <p>{formErrors.email.message}</p> : null} */}
-        </p>
-        <p>
+          <p>{formErrors.email}</p>
+        
+        
           <label>
             <input
               name="password"
@@ -95,19 +101,21 @@ return(
               onChange={handleChanges}
             />
           </label>
-          {/* {formErrors.password ? <p>{formErrors.password.message}</p> : null} */}
+          <p>{formErrors.password}</p>
 
-        </p>
+        
       </div>
+
       <div className='bottom'>
         <button type="submit">Log In</button>
         <div className='btn-login'>
               <h4>Don't have a account? </h4>
-              <button className='login' onClick={() => {push('/signup')}}>Sign Up</button>
+              <button className='login' disabled={disabled} onClick={() => {push('/signup')}}>Sign Up</button>
           </div>
 
         {/* {formErrors && <div style={{ color: "red" }}>{formErrors}</div>} */}
       </div>
+
     </StyledLoginForm>
   </StyledLogin>
 )

@@ -10,7 +10,6 @@ const NavBar = ({isLoggedIn, userLogout}) => {
 
   const handleLogout = (e) => {
     e.preventDefault()
-    
 
     history.push('/')
     console.log('lgout')
@@ -30,6 +29,13 @@ const NavBar = ({isLoggedIn, userLogout}) => {
         <div>
           <NavLink activeClassName="active" to="/addplants">Add Plants</NavLink>
         </div>
+        <div>
+          <NavLink activeClassName="active" to="/collection">My Plants</NavLink>
+        </div>
+        {/* route for edit profile page still being made */}
+        {/* <div>
+          <NavLink activeClassName="active" to="/profile">My Account</NavLink>
+        </div> */}
         <div>
           <button onClick={handleLogout}>logout</button>
         </div>
@@ -94,7 +100,8 @@ const NavStyle = styled.nav`
 
 
   .active{
-    color: #fff;
+    color: ${pr => pr.theme.fontColor};
+
   }
 
 
