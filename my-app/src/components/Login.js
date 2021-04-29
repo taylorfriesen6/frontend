@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import LoginSchema from "./LoginSchema";
 import axios from "axios";
 
+
 const initialFormValues = {
   email: "",
   password: "",
@@ -13,6 +14,7 @@ const initialFormErrors = {
   email: "",
   password: "",
 };
+
 const Login = (props) => {
 
   const history = useHistory();
@@ -52,6 +54,26 @@ const Login = (props) => {
   const submitForm = (e) => {
     e.preventDefault();
     axios
+    .post("https://water-my-plants-tt14.herokuapp.com/api/auth/login", loginValues)
+    .then((res) => {
+      console.log("login resp", res, res.data)
+      //setLoginValues(initialFormValues)
+      localStorage.setItem("token", res.data.token)
+      // localStorage.setItem("userId", res.data.user.user_id )
+      history.push("/")
+      
+      }
+      )
+    .catch(error => console.log({error}))
+    console.log()
+  }
+
+return(
+  <StyledLogin>
+  <StyledLoginForm className="loginformcontainer" 
+  onSubmit={submitForm}>
+      <h2>Login</h2>
+      <div>
 
       .post(
         "https://water-my-plants-tt14.herokuapp.com/api/auth/login",
@@ -80,7 +102,13 @@ const Login = (props) => {
               onChange={handleChanges}
             />
           </label>
+
+          {formErrors.email ? <ErrorMessage>{formErrors.email}</ErrorMessage> : null}
+     
+       
+
           <p>{formErrors.email}</p>
+
 
 
 
@@ -93,8 +121,25 @@ const Login = (props) => {
               onChange={handleChanges}
             />
           </label>
+
+       
+          {formErrors.password ? <ErrorMessage>{formErrors.password}</ErrorMessage> : null}
+          {console.log(formErrors.password)}
+        
+
+       
+      </div>
+      <button type="submit">Log In</button>
+
+      {/* {formErrors && <div style={{ color: "red" }}>{formErrors}</div>} */}
+    </StyledLoginForm>
+  </StyledLogin>
+)
+}
+
           <p>{formErrors.password}</p>
         </div>
+
 
 
         <button type="submit" disabled={disabled}>Log In</button>
@@ -201,5 +246,14 @@ span{
 color: ${pr => pr.theme.errorColor};
 white-space: ${pr => pr.theme.whiteSpace};
 }
+`
+
+const ErrorMessage= styled.p`
+font-family: PT Serif;
+font-style: normal;
+font-weight: normal;
+font-size: 11px;
+line-height: 15px;
+color:red;
 `
 export default Login;
