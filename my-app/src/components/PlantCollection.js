@@ -5,6 +5,7 @@ import NoPlants from './NoPlants'
 import IndividualPlant from './IndividualPlant'
 import styled from 'styled-components'
 import '../App.css'
+import { axiosWithAuth } from '../auth/axiosWithAuth'
 
 const Container = styled.div`
     display: flex;
@@ -183,19 +184,21 @@ const plants  = [
 const PlantCollection = () => {
 
     const { push } = useHistory()
-    // const [plants, setPlants] = useState([])
+    const [plants, setPlants] = useState([])
+    const [takeMeBack, setTakeMeBack] = useState(false)
 
-    // useEffect(() => {
-    //     axios
-    //     .get(`nothing`)
-    //     .then((res) => {
-    //         setPlants(res.data)
-    //     })
-    //     .catch((err) => {
-    //         console.log(err)
-    //     })
+    useEffect(() => {
+        axiosWithAuth()
+        .get(`/api/userplants`)
+        .then((res) => {
+            setPlants(res.data)
+            console.log('RES', res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 
-    // }, [])
+    }, [takeMeBack])
 
     return(
         <div className='plants-container'>
@@ -203,12 +206,12 @@ const PlantCollection = () => {
             <>
             <Add>
                 <h2> My Plants Collection</h2>
-                <h3 className='btn-add' onClick={() => {push('/plants/new')}}>Add A Plant +</h3>
+                <h3 className='btn-add' onClick={() => {push('/addplant')}}>Add A Plant +</h3>
             </Add>
      
 
             <Container className='card'>
-                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant}/>)}
+                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant} setPlants={setPlants} setTakeMeBack={setTakeMeBack} takeMeBack={takeMeBack} />)}
             </Container>
             </>}
         </div>

@@ -60,7 +60,7 @@ const Login = (props) => {
       //setLoginValues(initialFormValues)
       localStorage.setItem("token", res.data.token)
       // localStorage.setItem("userId", res.data.user.user_id )
-      history.push("/")
+      history.push("/collection")
       
       }
       )
@@ -68,26 +68,6 @@ const Login = (props) => {
     console.log()
   }
 
-return(
-  <StyledLogin>
-  <StyledLoginForm className="loginformcontainer" 
-  onSubmit={submitForm}>
-      <h2>Login</h2>
-      <div>
-
-      .post(
-        "https://water-my-plants-tt14.herokuapp.com/api/auth/login",
-        loginValues
-      )
-      .then((res) => {
-        console.log("login resp", res, res.data);
-        //setLoginValues(initialFormValues)
-        localStorage.setItem("token", res.data.token);
-        // localStorage.setItem("userId", res.data.user.user_id )
-        history.push("/collection");
-      })
-      .catch((error) => console.log({ error }));
-  };
   return (
     <StyledLogin>
       <StyledLoginForm className="loginformcontainer" onSubmit={submitForm}>
@@ -103,14 +83,8 @@ return(
             />
           </label>
 
-          {formErrors.email ? <ErrorMessage>{formErrors.email}</ErrorMessage> : null}
-     
-       
 
           <p>{formErrors.email}</p>
-
-
-
 
           <label>
             <input
@@ -122,14 +96,12 @@ return(
             />
           </label>
 
-       
-          {formErrors.password ? <ErrorMessage>{formErrors.password}</ErrorMessage> : null}
-          {console.log(formErrors.password)}
+          {<p>Errors.password</p>}
         
 
        
       </div>
-      <button type="submit">Log In</button>
+      <button disabled={disabled} type="submit">Log In</button>
 
       {/* {formErrors && <div style={{ color: "red" }}>{formErrors}</div>} */}
     </StyledLoginForm>
@@ -137,16 +109,6 @@ return(
 )
 }
 
-          <p>{formErrors.password}</p>
-        </div>
-
-
-
-        <button type="submit" disabled={disabled}>Log In</button>
-      </StyledLoginForm>
-    </StyledLogin>
-  );
-};
 //styling for loginform 
 const StyledLogin = styled.div`
 background: #E5E5E5;
