@@ -1,34 +1,7 @@
-
 import React, { useState } from "react";
 import { axiosWithAuth } from "../auth/axiosWithAuth";
 import styled from "styled-components";
 import { useHistory } from "react-router";
-
-const EditPlantContainer = styled.div`
-  width: 275px;
-  height: 100%;
-  padding: 20px;
-`;
-
-const SubmitChanges = styled.button`
-  width: 200px;
-  height: 44px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background: #548a60;
-`;
-const DeletePlant = styled.button`
-  width: 200px;
-  height: 44px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background: #b23a3a;
-`;
-
-import React, {useState} from 'react';
-import {axiosWithAuth} from '../auth/axiosWithAuth';
-import styled from 'styled-components';
-import { useHistory } from 'react-router';
 
 
 const EditPlantContainer = styled.div`
@@ -175,10 +148,10 @@ const EditPlant = (plants) => {
 
                     <div className='EditButtons'>
 
-                        <button onClick={onSubmit}>SAVE CHANGES
-                        </button>
-                        <button onClick={deleter}>DELETE FROM COLLECTION
-                        </button>
+                    <SubmitChanges onClick={onSubmit}>SAVE CHANGES
+                        </SubmitChanges>
+                        <DeletePlant onClick={deleter}>DELETE FROM COLLECTION
+                        </DeletePlant>
 
                     </div>
                 </form>
