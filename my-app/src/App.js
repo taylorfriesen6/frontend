@@ -3,6 +3,8 @@ import React from "react";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import Profile from "./components/Profile"
+import EditProfile from "./components/EditProfile";
 import PlantCollection from './components/PlantCollection';
 import SpeciesList from './components/SpeciesList';
 import  NavBar  from "./components/NavBar";
@@ -18,6 +20,8 @@ function App() {
       <NavBar />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
+      <Route path="/editprofile" component={EditProfile} />
+      <Route path="/profile" component={Profile} />
       <ProtectedRoute exact path="/" component={Home} />
       <ProtectedRoute path='/collection' component={PlantCollection} />
       <ProtectedRoute path="/addplant" component={SpeciesList} />
