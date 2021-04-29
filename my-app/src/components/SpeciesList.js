@@ -32,7 +32,6 @@ const SpeciesList = () => {
         <div>
             <div>
                 <h2>Add A Plant</h2>
-                <p>Cancel X</p>
             </div>
             <PlantCardContainer>
                 {

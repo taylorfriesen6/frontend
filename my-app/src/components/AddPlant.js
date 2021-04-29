@@ -73,7 +73,7 @@ console.log(formValues.plant_nickname)
             .post(`/api/userplants`, newPlantData)
             .then(res => {
                 console.log(res)
-                //TODO: history push to userplants
+                
             })
             .catch(err => {console.log({'AddPlant err:': err})})
     }

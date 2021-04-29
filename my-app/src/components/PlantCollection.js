@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import NoPlants from './NoPlants'
 import IndividualPlant from './IndividualPlant'
-import EditPlant from './EditPlant'
 import styled from 'styled-components'
 import '../App.css'
 
@@ -11,10 +10,11 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 1440px;
+    width: 80%;
     height: 550px;
     margin: auto;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 40px;
 
     & h3 {
         font-family: PT Serif;
@@ -24,10 +24,43 @@ const Container = styled.div`
         line-height: 24px;
         color: green;
     }
+    & img{
+        object-fit:cover;
+        width:100%;
+        height: auto;
+    }
+`
+const Add = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding-left: 80px;
+    padding-right: 80px;
 
+    & h2{
+        font-family: Amatic SC;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 28px;
+        color: #224229;
+        border-bottom: 2px solid #224229;
+    }
+
+    & h3{
+        font-family: Amatic SC;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        color: #CBAD91;
+        cursor: pointer;
+        transition: ease-in 500ms all;
+        
+        &:hover{
+            color:blue;
+            background-color: orange!important;
+        }
+    }
 `
 
-// dummyUserPlantData
 const plants  = [
     {
         user_plant_id: 1,
@@ -65,7 +98,7 @@ const plants  = [
         plant_name: "Love fern",
         plant_scientific_name: "Fernius Lovernius",
         water_schedule: "Twice Per Week",
-        plant_image: "http://url.com/image.jpg"
+        plant_image: "https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576"
     },
 
     {
@@ -78,7 +111,7 @@ const plants  = [
         plant_name: "Love fern",
         plant_scientific_name: "Fernius Lovernius",
         water_schedule: "Twice Per Week",
-        plant_image: "http://url.com/image.jpg"
+        plant_image: "https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576"
     },
 
     {
@@ -148,12 +181,8 @@ const plants  = [
 ]
 
 const PlantCollection = () => {
-    const [edit, setEdit] = useState(false)
-    const { push } = useHistory()
 
-    const abracadabra = () => {
-        setEdit(!edit);
-    };
+    const { push } = useHistory()
     // const [plants, setPlants] = useState([])
 
     // useEffect(() => {
@@ -170,13 +199,18 @@ const PlantCollection = () => {
 
     return(
         <div className='plants-container'>
-            {plants.length === 0 && <NoPlants />}
-            {plants.length !== 0 && <><h2>My Plants</h2> <button onClick={() => {push('/plants/new')}}>Add Plant</button> </>}
+            {plants.length === 0 ? <NoPlants /> : 
+            <>
+            <Add>
+                <h2> My Plants Collection</h2>
+                <h3 className='btn-add' onClick={() => {push('/plants/new')}}>Add A Plant +</h3>
+            </Add>
+     
 
             <Container className='card'>
-                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant} reveal={abracadabra}/>)}
+                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant}/>)}
             </Container>
-            {edit && <EditPlant plant={plants} ></EditPlant>}
+            </>}
         </div>
     )
 }
