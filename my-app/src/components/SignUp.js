@@ -34,11 +34,10 @@ const SignUp = () => {
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    if(formValues.password === formValues.confirmPassword) {
-      SignUpSchema.isValid(formValues).then(valid => setDisabled(!valid))
-    } else {
-      setDisabled(true)
-    }
+    SignUpSchema.isValid(formValues).then((valid) => {
+      setDisabled(!valid)
+    })
+    
   }, [formValues])
  
   const handleChanges = e => {
@@ -69,7 +68,7 @@ const SignUp = () => {
     .post("https://water-my-plants-tt14.herokuapp.com/api/auth/register", data)
     .then((resObj) => {
       console.log("signup res", resObj)
-      history.push("/")
+      history.push("/login")
       //route to plant collection
     })
     .catch(err => console.log({err}))
@@ -141,7 +140,7 @@ const SignUp = () => {
         </label>
         <p>{formErrors.confirmPassword}</p>
         <div>
-          <button type="submit">Sign Up</button>
+          <button disabled={disabled} type="submit">Sign Up</button>
         </div>
       </div>
     </StyledSignUpForm>

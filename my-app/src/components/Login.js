@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components'
 import { Link, useHistory } from 'react-router-dom'
 import LoginSchema from "./LoginSchema";
-
 import axios from 'axios'
 
 
@@ -29,7 +28,11 @@ const Login = (props) => {
   const [disabled, setDisabled] = useState(true)
 
   //still need to disable with if statement but v sleepy
-  
+  useEffect(() => {
+    LoginSchema.isValid(loginValues).then((valid) => {
+      setDisabled(!valid)
+    })
+  }, [loginValues])
 
   const handleChanges = e => {
     yup.reach(LoginSchema, e.target.name)
@@ -60,8 +63,8 @@ const Login = (props) => {
       //setLoginValues(initialFormValues)
       localStorage.setItem("token", res.data.token)
       // localStorage.setItem("userId", res.data.user.user_id )
-      history.push("/")
-      
+      history.push("/collection")
+
       }
       
       )
@@ -74,7 +77,7 @@ return(
   onSubmit={submitForm}>
       <h2>Login</h2>
       <div>
-        <p>
+        
           <label>
             Email
             <input
@@ -85,9 +88,9 @@ return(
               onChange={handleChanges}
             />
           </label>
-          {/* {formErrors.email ? <p>{formErrors.email.message}</p> : null} */}
-        </p>
-        <p>
+          <p>{formErrors.email}</p>
+        
+        
           <label>
             Password
             <input
@@ -98,13 +101,12 @@ return(
               onChange={handleChanges}
             />
           </label>
-          {/* {formErrors.password ? <p>{formErrors.password.message}</p> : null} */}
+          <p>{formErrors.password}</p>
 
-        </p>
+        
       </div>
-      <button type="submit">Log In</button>
+      <button type="submit" disabled={disabled}>Log In</button>
 
-      {/* {formErrors && <div style={{ color: "red" }}>{formErrors}</div>} */}
     </StyledLoginForm>
   </StyledLogin>
 )
