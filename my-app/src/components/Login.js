@@ -74,7 +74,7 @@ return(
   onSubmit={submitForm}>
       <h2>Login</h2>
       <div>
-
+      axios
       .post(
         "https://water-my-plants-tt14.herokuapp.com/api/auth/login",
         loginValues
@@ -135,7 +135,7 @@ return(
     </StyledLoginForm>
   </StyledLogin>
 )
-}
+
 
           <p>{formErrors.password}</p>
         </div>
