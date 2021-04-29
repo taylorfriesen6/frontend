@@ -35,6 +35,7 @@ box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
     height: 18px;
     left: 0px;
     top: 15px;
+
     font-family: PT Serif;
     font-style: normal;
     font-weight: normal;
@@ -42,19 +43,17 @@ box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
     line-height: 120%;
     color: #224229;
 }
-& .cardInfo{
-    padding-left: 15px;
-}
+
+
 `
 
 const IndividualPlant = (props) => {
-    const {plant, reveal} = props
-    // const {plant, setPlants, setTakeMeBack, takeMeBack} = props
-    // const [edit, setEdit] = useState(false)
+    const {plant, setPlants, setTakeMeBack, takeMeBack} = props
+    const [edit, setEdit] = useState(false)
 
-    // const abracadabra = () => {
-    //     setEdit(!edit);
-    // };
+    const abracadabra = () => {
+        setEdit(!edit);
+    };
 
     return (
         <Card>
@@ -74,11 +73,12 @@ const IndividualPlant = (props) => {
 
                 <h3>Notes</h3>
                 <p>{plant.notes}</p>
-                <button onClick ={reveal}> Edit this verdure</button>
-                {/* <button onClick ={abracadabra}> Edit this verdure</button>
+
+                <button onClick ={abracadabra}> Edit this verdure</button>
+
+
             </div>
-                {edit && <EditPlant plant={plant} abracadabra={abracadabra} setPlants={setPlants} setTakeMeBack={setTakeMeBack} takeMeBack={takeMeBack}></EditPlant>} */}
-            </div>
+                {edit && <EditPlant plant={plant} abracadabra={abracadabra} setPlants={setPlants} setTakeMeBack={setTakeMeBack} takeMeBack={takeMeBack}></EditPlant>}
         </Card>
     )
 }

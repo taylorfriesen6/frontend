@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
 import LoginSchema from "./LoginSchema";
-
 import axios from "axios";
+
 const initialFormValues = {
   email: "",
   password: "",
@@ -14,6 +14,7 @@ const initialFormErrors = {
   password: "",
 };
 const Login = (props) => {
+
   const history = useHistory();
   const [loginValues, setLoginValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -51,6 +52,7 @@ const Login = (props) => {
   const submitForm = (e) => {
     e.preventDefault();
     axios
+
       .post(
         "https://water-my-plants-tt14.herokuapp.com/api/auth/login",
         loginValues
@@ -70,10 +72,9 @@ const Login = (props) => {
         <h2>Login</h2>
         <div>
           <label>
-            Email
             <input
               name="email"
-              placeholder="email@email.com"
+              placeholder="Email"
               type="email"
               value={loginValues.email}
               onChange={handleChanges}
@@ -81,11 +82,12 @@ const Login = (props) => {
           </label>
           <p>{formErrors.email}</p>
 
+
+
           <label>
-            Password
             <input
               name="password"
-              placeholder="password"
+              placeholder="Password"
               type="password"
               value={loginValues.password}
               onChange={handleChanges}
@@ -93,6 +95,7 @@ const Login = (props) => {
           </label>
           <p>{formErrors.password}</p>
         </div>
+
 
         <button type="submit" disabled={disabled}>Log In</button>
       </StyledLoginForm>
@@ -104,6 +107,7 @@ const StyledLogin = styled.div`
 background: #E5E5E5;
 `
 const StyledLoginForm = styled.form`
+
 position: absolute;
 width: 570px;
 height: 305px;
@@ -192,6 +196,7 @@ color: #B1B7B3;
   color: blue;
 }
 }
+
 span{
 color: ${pr => pr.theme.errorColor};
 white-space: ${pr => pr.theme.whiteSpace};

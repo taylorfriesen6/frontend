@@ -7,7 +7,6 @@ const NavBar = ({isLoggedIn, userLogout}) => {
   const handleLogout = (e) => {
     e.preventDefault()
 
-
     history.push('/')
     console.log('lgout')
   }
@@ -87,6 +86,7 @@ const NavStyle = styled.nav`
   }
   .active{
     color: ${pr => pr.theme.fontColor};
+
   }
 `;
 const TitleStyle = styled.p`

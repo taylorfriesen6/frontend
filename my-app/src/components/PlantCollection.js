@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { axiosWithAuth } from '../auth/axiosWithAuth'
 import { useHistory } from 'react-router-dom'
 import NoPlants from './NoPlants'
 import IndividualPlant from './IndividualPlant'
 import styled from 'styled-components'
 import '../App.css'
+import { axiosWithAuth } from '../auth/axiosWithAuth'
 
 const Container = styled.div`
     display: flex;
@@ -29,6 +29,13 @@ const Container = styled.div`
         width:100%;
         height: auto;
     }
+
+    & img{
+        object-fit:cover;
+        width:100%;
+        height: auto;
+    }
+
 
 `
 
@@ -151,6 +158,7 @@ const plants  = [
     },
 ]
 
+
 const PlantCollection = () => {
     const { push } = useHistory()
 
@@ -168,10 +176,12 @@ const PlantCollection = () => {
                 console.log(err)
             })
     }, [takeMeBack])
+
     return(
         <div className='plants-container'>
             {plants.length === 0 && <NoPlants />}
             {plants.length !== 0 && <><h2>My Plants</h2> <button onClick={() => {push('/addplant')}}>Add Plant</button> </>}
+
             <Container className='card'>
                 {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant} setPlants={setPlants} setTakeMeBack={setTakeMeBack} takeMeBack={takeMeBack}/>)}
             </Container>

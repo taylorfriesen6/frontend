@@ -26,6 +26,7 @@ const SignUp = () => {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(true);
 
+
   useEffect(() => {SignUpSchema.isValid(formValues).then((valid) => {
     setDisabled(!valid)
   })
@@ -39,6 +40,7 @@ const handleChanges = e => {
       setFormErrors({
         ...formErrors,
         [e.target.name]: ''
+
       })
     })
     .catch(err => {
@@ -46,6 +48,7 @@ const handleChanges = e => {
         ...formErrors,
         [e.target.name]: err.errors[0]
       })
+
     })
     setFormValues({
       ...formValues,
@@ -125,6 +128,7 @@ return (
       </label>
       <p>{formErrors.confirmPassword}</p>
       <div> <button disabled={disabled} type="submit">Sign Up</button>
+
         </div>
       </div>
     </StyledSignUpForm>

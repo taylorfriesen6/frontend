@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { axiosWithAuth } from "../auth/axiosWithAuth";
 import styled from "styled-components";
@@ -24,16 +25,46 @@ const DeletePlant = styled.button`
   background: #b23a3a;
 `;
 
+import React, {useState} from 'react';
+import {axiosWithAuth} from '../auth/axiosWithAuth';
+import styled from 'styled-components';
+import { useHistory } from 'react-router';
+
+
+const EditPlantContainer = styled.div`
+    width: 275px;
+    height: 100%;
+    padding: 20px;
+`;
+
+const SubmitChanges = styled.button`
+    width: 200px;
+    height: 44px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #548A60;
+`;
+const DeletePlant = styled.button`
+    width: 200px;
+    height: 44px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #b23a3a;
+`;
+
 const initialFormValues = {
+
   plant_nickname: "",
   water_schedule: 0,
   notes: "",
   plant_location: "",
   species_id: 0,
+
 };
 //user_plant_id for specific plant
 
 const EditPlant = (plants) => {
+
   const { plant, abracadabra, setPlants, setTakeMeBack, takeMeBack } = plants;
   const [formValues, setFormValues] = useState({
     ...initialFormValues,
@@ -46,21 +77,21 @@ const EditPlant = (plants) => {
 };
 
    const deleter =  (e) => {
-        e.preventDefault();
+  e.preventDefault();
 
-        const rightPlant = {user_plant_id: plant.user_plant_id};
-        console.log('plantuserplantid', rightPlant);
+  const rightPlant = {user_plant_id: plant.user_plant_id};
+  console.log('plantuserplantid', rightPlant);
 
-        axiosWithAuth()
-        .delete(`/api/userplants`, {data: rightPlant})
-            .then(dundundun => {
-                console.log('deletion success from EditPlant', dundundun);
-                abracadabra();
-            })
-            .catch(err => {
-                console.error('deletion error on EditPlant', err);
-            });
-    }
+  axiosWithAuth()
+  .delete(`/api/userplants`, {data: rightPlant})
+      .then(dundundun => {
+          console.log('deletion success from EditPlant', dundundun);
+          abracadabra();
+      })
+      .catch(err => {
+          console.error('deletion error on EditPlant', err);
+      });
+}
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -73,6 +104,7 @@ const EditPlant = (plants) => {
             plant_location: formValues.plant_location,
             species_id: plant.species_id
         };
+
         console.log('plantuserplantid', plant.user_plant_id);
 
         axiosWithAuth()
@@ -87,10 +119,13 @@ const EditPlant = (plants) => {
         });
     };
 
-  return (
-      <EditPlantContainer>
+
+    return (
+        <EditPlantContainer>
+
             <h1>You've traveled far.... waterer</h1>
             <div className='dynamicPlantValues'>
+
 
                 <form>
                     <label htmlFor='plant_nickname'><h3>NICKNAME</h3></label>
@@ -101,7 +136,10 @@ const EditPlant = (plants) => {
                     name = 'plant_nickname'
                     placeholder = {plant.plant_nickname}>
                        </input>
-                       <label htmlFor='water_day'><h3>Start Watering</h3></label>
+
+
+                    <label htmlFor='water_day'><h3>Start Watering</h3></label>
+
                         <select
                          name="water_day"
                           id="water_day"
@@ -116,6 +154,7 @@ const EditPlant = (plants) => {
                             <option value={6}>Friday</option>
                             <option value={7}>Saturday</option>
                         </select>
+
                     <label htmlFor='notes'><h3>NOTES</h3></label>
                     <input 
                     type = 'text'
@@ -132,17 +171,20 @@ const EditPlant = (plants) => {
                     name = 'plant_location'
                     placeholder = {plant.plant_location}>
                        </input>
-
+     
 
                     <div className='EditButtons'>
-                    <SubmitChanges onClick={onSubmit}>SAVE CHANGES
-                        </SubmitChanges>
-                        <DeletePlant onClick={deleter}>DELTE FROM COLLECTION
-                        </DeletePlant>
+
+                        <button onClick={onSubmit}>SAVE CHANGES
+                        </button>
+                        <button onClick={deleter}>DELETE FROM COLLECTION
+                        </button>
+
                     </div>
                 </form>
             </div>
-            </EditPlantContainer>
+        </EditPlantContainer>
+
     );
 };
 
