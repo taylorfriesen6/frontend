@@ -3,10 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components'
 import { Link, useHistory } from 'react-router-dom'
 import LoginSchema from "./LoginSchema";
-
 import axios from 'axios'
-
-
 
 const initialFormValues = {
   email: "",
@@ -17,8 +14,6 @@ const initialFormErrors = {
   email: "",
   password: "",
 };
-
-
 
 const Login = (props) => {
 
@@ -63,9 +58,9 @@ const Login = (props) => {
       history.push("/")
       
       }
-      
       )
     .catch(error => console.log({error}))
+    console.log()
   }
 
 return(
@@ -74,7 +69,6 @@ return(
   onSubmit={submitForm}>
       <h2>Login</h2>
       <div>
-        <p>
           <label>
             Email
             <input
@@ -85,9 +79,9 @@ return(
               onChange={handleChanges}
             />
           </label>
-          {/* {formErrors.email ? <p>{formErrors.email.message}</p> : null} */}
-        </p>
-        <p>
+          {formErrors.email ? <ErrorMessage>{formErrors.email}</ErrorMessage> : null}
+     
+       
           <label>
             Password
             <input
@@ -98,9 +92,12 @@ return(
               onChange={handleChanges}
             />
           </label>
-          {/* {formErrors.password ? <p>{formErrors.password.message}</p> : null} */}
+       
+          {formErrors.password ? <ErrorMessage>{formErrors.password}</ErrorMessage> : null}
+          {console.log(formErrors.password)}
+        
 
-        </p>
+       
       </div>
       <button type="submit">Log In</button>
 
@@ -142,6 +139,14 @@ span{
     color: ${pr => pr.theme.errorColor};
     white-space: ${pr => pr.theme.whiteSpace};
 }
+`
+const ErrorMessage= styled.p`
+font-family: PT Serif;
+font-style: normal;
+font-weight: normal;
+font-size: 11px;
+line-height: 15px;
+color:red;
 `
 export default Login;
 

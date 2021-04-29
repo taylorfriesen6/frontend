@@ -8,8 +8,7 @@ width: 270px;
 height: 550px;
 box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
 
-`
-
+`;
 const IndividualPlant = (props) => {
     const {plant, reveal} = props
 
