@@ -15,6 +15,11 @@ function App() {
   return (
     <div>
       <NavBar />
+      <Route path='/collection' component={PlantCollection} />
+      <Route path="/no-plants" component={NoPlants} />
+      <Route path="/individual-plant" component={IndividualPlant} />
+      <Route path="/addplant" component={SpeciesList} />
+      <Route exact path="/" component={Home} />
       <Route path="/addplant" component={SpeciesList} />
       <Route exact path="/" component={Home} />
       <Route path="/login" component={Login} />
