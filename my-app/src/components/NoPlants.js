@@ -7,7 +7,7 @@ const NoPlants = () => {
     return(
         <div>
             <h1>Looks like you don't have any plants</h1>
-            <button onClick={() => {push('/plants/new')}}>Add a Plant</button>
+            <button onClick={() => {push('/addplant')}}>Add a Plant</button>
         </div>
     )
 }

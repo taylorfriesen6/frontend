@@ -9,6 +9,7 @@ import  NavBar  from "./components/NavBar";
 import { Route } from "react-router-dom";
 import NoPlants from './components/NoPlants';
 import IndividualPlant from './components/IndividualPlant';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <ProtectedRoute path="/addplant" component={SpeciesList} />
       <ProtectedRoute path="/no-plants" component={NoPlants} />
       <ProtectedRoute path="/individual-plant" component={IndividualPlant} />
+  
     </div>
   );
 }
