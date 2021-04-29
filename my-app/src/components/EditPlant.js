@@ -49,8 +49,10 @@ const EditPlant = (plants) => {
          [e.target.name]: e.target.value});
 };
 
+
    const deleter =  (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    alert('Reload Page')
 
   const rightPlant = {user_plant_id: plant.user_plant_id};
   console.log('plantuserplantid', rightPlant);
@@ -68,6 +70,7 @@ const EditPlant = (plants) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        
 
         const updatedPlant = {
             user_plant_id: plant.user_plant_id,
@@ -150,7 +153,7 @@ const EditPlant = (plants) => {
 
                     <SubmitChanges onClick={onSubmit}>SAVE CHANGES
                         </SubmitChanges>
-                        <DeletePlant onClick={deleter}>DELETE FROM COLLECTION
+                        <DeletePlant onClick={deleter} >DELETE FROM COLLECTION
                         </DeletePlant>
 
                     </div>

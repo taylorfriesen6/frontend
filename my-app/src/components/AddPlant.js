@@ -37,6 +37,11 @@ const AddPlant = (props) => {
     const { species_id } = props;
     const [ formValues, setFormValues ] = useState({...initialFormValues, species_id: species_id});
 
+
+    const message = () => {
+        window.alert("Plant has been added")
+    }
+
     const changeHandler = (evt) => {
         setFormValues({...formValues, [evt.target.name]: evt.target.value});
         yup.reach(addSchema, evt.target.name)
@@ -121,7 +126,7 @@ console.log(formValues.plant_nickname)
                     onChange={changeHandler}
                     placeholder="Notes...">   
                 </input>
-                <button >Add Plant</button>
+                <button onClick={message} >Add Plant</button>
             </form>
         </AddPlantContainer>
     )
