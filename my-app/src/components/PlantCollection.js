@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import NoPlants from './NoPlants'
 import IndividualPlant from './IndividualPlant'
 import styled from 'styled-components'
 import '../App.css'
-import { axiosWithAuth } from '../auth/axiosWithAuth'
 
 const Container = styled.div`
     display: flex;
@@ -16,22 +16,41 @@ const Container = styled.div`
     justify-content: space-between;
     padding: 40px;
 
-    & h3 {
-        font-family: PT Serif;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 24px;
-        color: green;
-    }
-
     & img{
         object-fit:cover;
         width:100%;
         height: auto;
     }
+`
+const Add = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding-left: 80px;
+    padding-right: 80px;
 
+    & h2{
+        font-family: Amatic SC;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 28px;
+        color: #224229;
+        border-bottom: 2px solid #224229;
+    }
 
+    & h3{
+        font-family: Amatic SC;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        color: #CBAD91;
+        cursor: pointer;
+        transition: ease-in 500ms all;
+        
+        &:hover{
+            color:blue;
+            background-color: orange!important;
+        }
+    }
 `
 
 // dummyUserPlantData
@@ -154,33 +173,37 @@ const plants  = [
     },
 ]
 
-
 const PlantCollection = () => {
+
     const { push } = useHistory()
+    // const [plants, setPlants] = useState([])
 
-    const [plants, setPlants] = useState([])
-    const [takeMeBack, setTakeMeBack] = useState(false)
+    // useEffect(() => {
+    //     axios
+    //     .get(`nothing`)
+    //     .then((res) => {
+    //         setPlants(res.data)
+    //     })
+    //     .catch((err) => {
+    //         console.log(err)
+    //     })
 
-    useEffect(() => {
-        axiosWithAuth()
-            .get(`/api/userplants`)
-            .then((res) => {
-                console.log("res", res)
-                setPlants(res.data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }, [takeMeBack])
+    // }, [])
 
     return(
         <div className='plants-container'>
-            {plants.length === 0 && <NoPlants />}
-            {plants.length !== 0 && <><h2>My Plants</h2> <button onClick={() => {push('/addplant')}}>Add Plant</button> </>}
+            {plants.length === 0 ? <NoPlants /> : 
+            <>
+            <Add>
+                <h2> My Plants Collection</h2>
+                <h3 className='btn-add' onClick={() => {push('/plants/new')}}>Add A Plant +</h3>
+            </Add>
+     
 
             <Container className='card'>
-                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant} setPlants={setPlants} setTakeMeBack={setTakeMeBack} takeMeBack={takeMeBack}/>)}
+                {plants && plants.map(plant => <IndividualPlant key={plant.user_plant_id} plant={plant}/>)}
             </Container>
+            </>}
         </div>
     )
 }

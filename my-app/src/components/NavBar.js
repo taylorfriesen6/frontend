@@ -77,7 +77,6 @@ const NavStyle = styled.nav`
     background: none!important;
     border: none;
     text-transform: uppercase;
-    /*input has OS specific font-family*/
     cursor: pointer;
     font-weight: bold;
     border-radius: 5px;
