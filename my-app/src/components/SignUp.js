@@ -26,6 +26,8 @@ const SignUp = () => {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(true);
 
+  const { push } = useHistory()
+
 
   useEffect(() => {SignUpSchema.isValid(formValues).then((valid) => {
     setDisabled(!valid)
@@ -70,12 +72,22 @@ const submitForm = (e) => {
 return (
   <div className="signup">
   <StyledSignUpForm className="signupformcontainer" onSubmit={submitForm}>
-    <h2>Sign Up</h2>
-    <div>
+    <StyledTitle>Sign Up</StyledTitle>
+    <StyledForm>
       <label>
-        Name
         <input
           name="name"
+          style={{
+            width: '480px',
+            paddingLeft: "4px",
+            height: "60px",
+            fontSize: "17px",
+            color: "#224229",
+            fontWeight: "bold",
+            fontFamily: "PT Serif",
+            fontStyle: "normal",
+            borderBottom: "3px solid #224229"
+          }}
           placeholder="name"
           type="text"
           value={formValues.name}
@@ -84,9 +96,19 @@ return (
       </label>
       <p>{formErrors.name}</p>
       <label>
-        Phone Number
         <input
           name="phone"
+          style={{
+            width: '480px',
+            paddingLeft: "4px",
+            height: "60px",
+            fontSize: "17px",
+            color: "#224229",
+            fontWeight: "bold",
+            fontFamily: "PT Serif",
+            fontStyle: "normal",
+            borderBottom: "3px solid #224229"
+          }}
           placeholder="phone number"
           type="text"
           value={formValues.phone}
@@ -95,9 +117,19 @@ return (
       </label>
       <p>{formErrors.phone}</p>
       <label>
-        Email
         <input
           name="email"
+          style={{
+            width: '480px',
+            paddingLeft: "4px",
+            height: "60px",
+            fontSize: "17px",
+            color: "#224229",
+            fontWeight: "bold",
+            fontFamily: "PT Serif",
+            fontStyle: "normal",
+            borderBottom: "3px solid #224229"
+          }}
           placeholder="email@email.com"
           type="text"
           value={formValues.email}
@@ -106,9 +138,19 @@ return (
       </label>
       <p>{formErrors.email}</p>
       <label>
-        Password
         <input
           name="password"
+          style={{
+            width: '480px',
+            paddingLeft: "4px",
+            height: "60px",
+            fontSize: "17px",
+            color: "#224229",
+            fontWeight: "bold",
+            fontFamily: "PT Serif",
+            fontStyle: "normal",
+            borderBottom: "3px solid #224229"
+          }}
           placeholder="password"
           type="password"
           value={formValues.password}
@@ -117,9 +159,19 @@ return (
       </label>
       <p>{formErrors.password}</p>
       <label>
-        Confirm Password
         <input
           name="confirmPassword"
+          style={{
+            width: '480px',
+            paddingLeft: "4px",
+            height: "60px",
+            fontSize: "17px",
+            color: "#224229",
+            fontWeight: "bold",
+            fontFamily: "PT Serif",
+            fontStyle: "normal",
+            borderBottom: "3px solid #224229"
+          }}
           placeholder="confirm password"
           type="password"
           value={formValues.confirmPassword}
@@ -127,10 +179,15 @@ return (
         />
       </label>
       <p>{formErrors.confirmPassword}</p>
-      <div> <button disabled={disabled} type="submit">Sign Up</button>
-
+      <StyledBox> 
+        <button disabled={disabled} type="submit">Sign Up</button>
+        <div className='in'>
+          <h4>Already have an account? </h4>
+          <h5 className='signIn' onClick={() => {push('/login')}}> Sign in.</h5>
         </div>
-      </div>
+
+        </StyledBox>
+      </StyledForm>
     </StyledSignUpForm>
     </div>
   );
@@ -143,5 +200,61 @@ const StyledSignUpForm = styled.form`
   top: 265px;
   background: #FFFFFF;
   box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
-  `;
+  padding-left: 20px;
+
+  `
+  const StyledTitle = styled.h2`
+    width: 490px;
+    height: 37px;
+    font-family: PT Serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 37px;
+    color: #224229;
+    
+  `
+  const StyledForm = styled.div`
+  & p{
+    color: red;
+  }
+  & button{
+    width: 232px;
+    height: 54px;
+    background: #548A60;
+    margin-top: 5px;
+
+    &:hover{
+      color: white;
+      cursor: pointer;
+    }
+  }
+  input[type=text], input[type=password]{
+    border:none;
+  }
+`
+const StyledBox = styled.div`
+  display: flex;
+
+  & .in{
+    display: flex;
+    justify-content: space-between;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 80px;
+    padding-left: 20px;
+    color: #B1B7B3;
+
+    & .signIn{
+      margin-left: 5px;
+      color: black;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+`
+
 export default SignUp;

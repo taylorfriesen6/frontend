@@ -114,6 +114,7 @@ console.log(formValues.plant_nickname)
                 </select>
 
                 <label><h3>Notes</h3></label>
+                {formErrors.notes ? <ErrorMessage>{formErrors.notes} </ErrorMessage>: null}
                 <input
                     type="text"
                     name="notes"

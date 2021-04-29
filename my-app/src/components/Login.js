@@ -208,6 +208,9 @@ span{
 color: ${pr => pr.theme.errorColor};
 white-space: ${pr => pr.theme.whiteSpace};
 }
+input[type=email], input[type=password]{
+    border:none;
+  }
 `
 
 const ErrorMessage= styled.p`
