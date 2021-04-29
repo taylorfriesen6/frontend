@@ -3,6 +3,8 @@ import React from "react";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import Profile from "./components/Profile"
+import EditProfile from "./components/EditProfile";
 import PlantCollection from './components/PlantCollection';
 import SpeciesList from './components/SpeciesList';
 import  NavBar  from "./components/NavBar";
@@ -21,6 +23,8 @@ function App() {
       <Route path="/signup" component={SignUp} />
       <Route path='/collection' component={PlantCollection} />
       <Route path="/no-plants" component={NoPlants} />
+      <Route path="/editprofile" component={EditProfile} />
+      <Route path="/profile" component={Profile} />
     </div>
   );
 }

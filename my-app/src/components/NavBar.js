@@ -33,6 +33,9 @@ const NavBar = ({isLoggedIn, userLogout}) => {
         <div>
           <button onClick={handleLogout}>logout</button>
         </div>
+        <div>
+          <NavLink exact activeClassName="active" to="/profile">Profile</NavLink>
+        </div>
       </LinksStyle>
     </NavStyle>
     )
