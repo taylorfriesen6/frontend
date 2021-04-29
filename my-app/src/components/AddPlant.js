@@ -36,7 +36,6 @@ const AddPlant = (props) => {
     const [formErrors, setFormErrors] = useState(initialFormErrors)
     const { species_id } = props;
     const [ formValues, setFormValues ] = useState({...initialFormValues, species_id: species_id});
-    const [disabled, setdisabled]=useState({})
 
     const changeHandler = (evt) => {
         setFormValues({...formValues, [evt.target.name]: evt.target.value});
@@ -115,7 +114,6 @@ console.log(formValues.plant_nickname)
                 </select>
 
                 <label><h3>Notes</h3></label>
-                {formErrors.notes ? <ErrorMessage>{formErrors.notes} </ErrorMessage>: null}
                 <input
                     type="text"
                     name="notes"
@@ -123,7 +121,7 @@ console.log(formValues.plant_nickname)
                     onChange={changeHandler}
                     placeholder="Notes...">   
                 </input>
-                <button disabled= {disabled}>Add Plant</button>
+                <button >Add Plant</button>
             </form>
         </AddPlantContainer>
     )

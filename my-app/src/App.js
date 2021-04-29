@@ -20,8 +20,8 @@ function App() {
       <NavBar />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
-      <Route path="/editprofile" component={EditProfile} />
-      <Route path="/profile" component={Profile} />
+      <ProtectedRoute path="/editprofile" component={EditProfile} />
+      <ProtectedRoute path="/profile" component={Profile} />
       <ProtectedRoute exact path="/" component={Home} />
       <ProtectedRoute path='/collection' component={PlantCollection} />
       <ProtectedRoute path="/addplant" component={SpeciesList} />

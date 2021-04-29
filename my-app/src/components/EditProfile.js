@@ -84,7 +84,8 @@ const EditProfile = (props) => {
 
     axios.get(`https://water-my-plants-tt14.herokuapp.com/api/users`)
         .then(res => {
-            setProfileValues(res.data);
+          const password = res.data.password;
+          console.log(password)
         })
         .catch((error) => {
           console.log(error)
@@ -122,6 +123,8 @@ const EditProfile = (props) => {
         })
       .catch(error => console.log({error}))
     }
+
+    console.log(profileValues)
 
 return(
     <StyledProfile>
