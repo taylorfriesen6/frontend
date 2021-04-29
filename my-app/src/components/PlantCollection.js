@@ -24,6 +24,11 @@ const Container = styled.div`
         line-height: 24px;
         color: green;
     }
+    & img{
+        object-fit:cover;
+        width:100%;
+        height: auto;
+    }
 
     & img{
         object-fit:cover;
@@ -34,7 +39,6 @@ const Container = styled.div`
 
 `
 
-// dummyUserPlantData
 const plants  = [
     {
         user_plant_id: 1,

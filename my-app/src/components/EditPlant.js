@@ -1,7 +1,35 @@
+
+import React, { useState } from "react";
+import { axiosWithAuth } from "../auth/axiosWithAuth";
+import styled from "styled-components";
+import { useHistory } from "react-router";
+
+const EditPlantContainer = styled.div`
+  width: 275px;
+  height: 100%;
+  padding: 20px;
+`;
+
+const SubmitChanges = styled.button`
+  width: 200px;
+  height: 44px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #548a60;
+`;
+const DeletePlant = styled.button`
+  width: 200px;
+  height: 44px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #b23a3a;
+`;
+
 import React, {useState} from 'react';
 import {axiosWithAuth} from '../auth/axiosWithAuth';
 import styled from 'styled-components';
 import { useHistory } from 'react-router';
+
 
 const EditPlantContainer = styled.div`
     width: 275px;
@@ -25,41 +53,45 @@ const DeletePlant = styled.button`
 `;
 
 const initialFormValues = {
-    plant_nickname: '',
-    water_day: 0,
-    notes: '',
-    plant_location: '',
-    species_id: 0
+
+  plant_nickname: "",
+  water_schedule: 0,
+  notes: "",
+  plant_location: "",
+  species_id: 0,
+
 };
 //user_plant_id for specific plant
 
 const EditPlant = (plants) => {
-    const {plant, abracadabra, setPlants, setTakeMeBack, takeMeBack} = plants;
-    const [formValues,
-         setFormValues] = useState({...initialFormValues,
-             user_plant_id: plant.user_plant_id});
 
-    const changer = (e) => {
-        setFormValues({...formValues,
-             [e.target.name]: e.target.value});
-    };
+  const { plant, abracadabra, setPlants, setTakeMeBack, takeMeBack } = plants;
+  const [formValues, setFormValues] = useState({
+    ...initialFormValues,
+    user_plant_id: plant.user_plant_id,
+  });
 
-    const deleter =  (e) => {
-        e.preventDefault();
+  const changer = (e) => {
+    setFormValues({...formValues,
+         [e.target.name]: e.target.value});
+};
 
-        const rightPlant = {user_plant_id: plant.user_plant_id};
-        console.log('plantuserplantid', rightPlant);
+   const deleter =  (e) => {
+  e.preventDefault();
 
-        axiosWithAuth()
-        .delete(`/api/userplants`, {data: rightPlant})
-            .then(dundundun => {
-                console.log('deletion success from EditPlant', dundundun);
-                abracadabra();
-            })
-            .catch(err => {
-                console.error('deletion error on EditPlant', err);
-            });
-    }
+  const rightPlant = {user_plant_id: plant.user_plant_id};
+  console.log('plantuserplantid', rightPlant);
+
+  axiosWithAuth()
+  .delete(`/api/userplants`, {data: rightPlant})
+      .then(dundundun => {
+          console.log('deletion success from EditPlant', dundundun);
+          abracadabra();
+      })
+      .catch(err => {
+          console.error('deletion error on EditPlant', err);
+      });
+}
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -87,13 +119,15 @@ const EditPlant = (plants) => {
         });
     };
 
+
     return (
         <EditPlantContainer>
+
             <h1>You've traveled far.... waterer</h1>
             <div className='dynamicPlantValues'>
-                
-                <form>
 
+
+                <form>
                     <label htmlFor='plant_nickname'><h3>NICKNAME</h3></label>
                     <input 
                     type = 'text'
@@ -105,6 +139,7 @@ const EditPlant = (plants) => {
 
 
                     <label htmlFor='water_day'><h3>Start Watering</h3></label>
+
                         <select
                          name="water_day"
                           id="water_day"
@@ -136,7 +171,7 @@ const EditPlant = (plants) => {
                     name = 'plant_location'
                     placeholder = {plant.plant_location}>
                        </input>
-                    
+     
 
                     <div className='EditButtons'>
 
@@ -149,6 +184,7 @@ const EditPlant = (plants) => {
                 </form>
             </div>
         </EditPlantContainer>
+
     );
 };
 

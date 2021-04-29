@@ -44,9 +44,6 @@ box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
     color: #224229;
 }
 
-& .cardInfo{
-    padding-left: 15px;
-}
 
 `
 
@@ -57,7 +54,6 @@ const IndividualPlant = (props) => {
     const abracadabra = () => {
         setEdit(!edit);
     };
-
 
     return (
         <Card>
@@ -77,7 +73,10 @@ const IndividualPlant = (props) => {
 
                 <h3>Notes</h3>
                 <p>{plant.notes}</p>
+
                 <button onClick ={abracadabra}> Edit this verdure</button>
+
+
             </div>
                 {edit && <EditPlant plant={plant} abracadabra={abracadabra} setPlants={setPlants} setTakeMeBack={setTakeMeBack} takeMeBack={takeMeBack}></EditPlant>}
         </Card>
