@@ -8,10 +8,55 @@ width: 270px;
 height: 550px;
 box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
 
+& h2{
+    font-family: PT Serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    color: #224229;
+}
+& h5{
+    width: 229px;
+    height: 21px;
+    left: 0px;
+    top: 29px;
+    border-bottom: 3px solid #CBAD91;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 160%;
+    color: #BCB6A6;
+}
+& p{
+    position: static;
+    width: 240px;
+    height: 18px;
+    left: 0px;
+    top: 15px;
+
+    font-family: PT Serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 120%;
+    color: #224229;
+}
+
+& .cardInfo{
+    padding-left: 15px;
+}
+
 `
 
 const IndividualPlant = (props) => {
-    const {plant, reveal} = props
+    const {plant, setPlants, setTakeMeBack, takeMeBack} = props
+    const [edit, setEdit] = useState(false)
+
+    const abracadabra = () => {
+        setEdit(!edit);
+    };
 
 
     return (
@@ -22,7 +67,7 @@ const IndividualPlant = (props) => {
 
             <div className='cardInfo'>
                 <h2>{plant.plant_nickname}</h2>
-                <p>{plant.plant_scientific_name}</p>
+                <h5>{plant.plant_scientific_name}</h5>
 
                 <h3>Watering Schedule</h3>
                 <p>{plant.water_schedule} {plant.water_day}</p>
@@ -32,8 +77,9 @@ const IndividualPlant = (props) => {
 
                 <h3>Notes</h3>
                 <p>{plant.notes}</p>
-                <button onClick ={reveal}> Edit this verdure</button>
+                <button onClick ={abracadabra}> Edit this verdure</button>
             </div>
+                {edit && <EditPlant plant={plant} abracadabra={abracadabra} setPlants={setPlants} setTakeMeBack={setTakeMeBack} takeMeBack={takeMeBack}></EditPlant>}
         </Card>
     )
 }
