@@ -6,21 +6,23 @@ import SignUp from "./components/SignUp";
 import PlantCollection from './components/PlantCollection';
 import SpeciesList from './components/SpeciesList';
 import  NavBar  from "./components/NavBar";
-import { Route } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import NoPlants from './components/NoPlants';
 import IndividualPlant from './components/IndividualPlant';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 function App() {
   return (
     <div>
       <NavBar />
-      <Route path="/addplant" component={SpeciesList} />
-      <Route exact path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
-      <Route path='/collection' component={PlantCollection} />
-      <Route path="/no-plants" component={NoPlants} />
+      <ProtectedRoute exact path="/" component={Home} />
+      <ProtectedRoute path='/collection' component={PlantCollection} />
+      <ProtectedRoute path="/addplant" component={SpeciesList} />
+      <ProtectedRoute path="/no-plants" component={NoPlants} />
+      <ProtectedRoute path="/individual-plant" component={IndividualPlant} />
     </div>
   );
 }
