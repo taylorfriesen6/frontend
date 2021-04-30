@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import styled from 'styled-components';
+import NavBar from "./NavBar";
 
 
 const StyledHome = styled.div`
@@ -26,6 +27,8 @@ const StyledPika = styled.div`
 const Home = () => {
 
     return(
+        <div>
+        <NavBar />
             <StyledHome>
                 <div class='home'>
                     <h1>WMP 💦</h1>
@@ -35,6 +38,7 @@ const Home = () => {
                     </StyledPika>
                 </div>
             </StyledHome>
+        </div>
     )
 }
     

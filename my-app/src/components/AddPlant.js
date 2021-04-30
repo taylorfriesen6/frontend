@@ -1,4 +1,4 @@
-import react, { useState } from 'react';
+import react, { useState, useHistory } from 'react';
 import styled from 'styled-components';
 import { axiosWithAuth } from '../auth/axiosWithAuth';
 import addSchema from "./AddSchema";
@@ -33,6 +33,8 @@ const initialFormErrors = {
     notes: ""
   };
 const AddPlant = (props) => {
+    const { push } = useHistory()
+
     const [formErrors, setFormErrors] = useState(initialFormErrors)
     const { species_id } = props;
     const [ formValues, setFormValues ] = useState({...initialFormValues, species_id: species_id});
@@ -72,6 +74,7 @@ console.log(formValues.plant_nickname)
             .post(`/api/userplants`, newPlantData)
             .then(res => {
                 console.log(res)
+               // history.push("/collection")
                 
             })
             .catch(err => {console.log({'AddPlant err:': err})})

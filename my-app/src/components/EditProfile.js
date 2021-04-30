@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Link, useHistory } from 'react-router-dom'
 import EditProfileSchema from "./EditProfileSchema";
 import axios from 'axios'
+import NavBar from "./NavBar";
 
 const initialFormValues = {
     email: "",
@@ -127,11 +128,13 @@ const EditProfile = (props) => {
     console.log(profileValues)
 
 return(
+  <div>
+  <NavBar />
     <StyledProfile>
     <form onSubmit={submitForm}>
       <h2>Edit Profile</h2>
       <div>
-        <p>
+        
         <h3>Change Email</h3>
           <label>
             <input
@@ -143,8 +146,8 @@ return(
             />
           </label>
           <p>{formErrors.email}</p>
-        </p>
-        <p>
+        
+        
         <h3>Change Password</h3>
           <label>
             <input
@@ -166,13 +169,14 @@ return(
             />
           </label>
           <p>{formErrors.confirmPassword}</p>
-        </p>
+        
       </div>
       <div>
         <button type="submit">Save Changes</button>
       </div>
       </form>
       </StyledProfile>
+      </div>
 )
 }
 

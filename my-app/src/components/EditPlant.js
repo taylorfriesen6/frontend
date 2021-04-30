@@ -104,7 +104,7 @@ const EditPlant = (plants) => {
                     <label htmlFor='plant_nickname'><h3>NICKNAME</h3></label>
                     <input 
                     type = 'text'
-                    value = {formValues.plant_nickname}
+                    value = {plant.plant_nickname}
                     onChange = {changer}
                     name = 'plant_nickname'
                     placeholder = {plant.plant_nickname}>
@@ -116,7 +116,7 @@ const EditPlant = (plants) => {
                         <select
                          name="water_day"
                           id="water_day"
-                           value={formValues.water_day}
+                           value={plant.water_day}
                             onChange={changer}>
                             <option value={null}>Choose a day</option>
                             <option value={1}>Sunday</option>
@@ -131,7 +131,7 @@ const EditPlant = (plants) => {
                     <label htmlFor='notes'><h3>NOTES</h3></label>
                     <input 
                     type = 'text'
-                    value = {formValues.notes}
+                    value = {plant.notes}
                     onChange = {changer}
                     name = 'notes'
                     placeholder = {plant.notes}>
@@ -139,7 +139,7 @@ const EditPlant = (plants) => {
                     <label htmlFor='plant_location'><h3>PLANT LOCATION</h3></label>
                     <input 
                     type = 'text'
-                    value = {formValues.plant_location}
+                    value = {plant.plant_location}
                     onChange = {changer}
                     name = 'plant_location'
                     placeholder = {plant.plant_location}>
