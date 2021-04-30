@@ -1,8 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import styled from 'styled-components';
+import styled from "styled-components";
 import NavBar from "./NavBar";
-
 
 const StyledHome = styled.div`
   position: absolute;
@@ -24,25 +22,18 @@ const StyledPika = styled.div`
 `;
 
 const Home = () => {
-
-
-
-    return(
-        <div>
-        <NavBar />
-            <StyledHome>
-                <div class='home'>
-                    <h1>WMP 💦</h1>
-                    <p>keep up with your plants :D</p>
-                    <StyledPika>
-                        .
-                    </StyledPika>
-                </div>
-            </StyledHome>
+  return (
+    <div>
+      <NavBar />
+      <StyledHome>
+        <div class="home">
+          <h1>WMP 💦</h1>
+          <p>keep up with your plants :D</p>
+          <StyledPika>.</StyledPika>
         </div>
-    )
-}
-    
-export default Home
+      </StyledHome>
+    </div>
+  );
+};
 
-
+export default Home;
