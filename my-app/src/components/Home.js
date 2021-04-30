@@ -11,20 +11,21 @@ const StyledHome = styled.div`
   left: 435px;
   top: 265px;
 
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
 `;
 
 const StyledPika = styled.div`
-    width: 550px;
-    height: 550px;
-    margin: 0 0 0 6%;
-    background-image: url("https://i.pinimg.com/originals/00/20/e7/0020e7f57ca166466a1ec5e409928125.gif");
-    background-repeat: no-repeat;
-    
+  width: 550px;
+  height: 550px;
+  margin: 0 0 0 6%;
+  background-image: url("https://i.pinimg.com/originals/00/20/e7/0020e7f57ca166466a1ec5e409928125.gif");
+  background-repeat: no-repeat;
 `;
 
 const Home = () => {
+
+
 
     return(
         <div>
@@ -43,3 +44,5 @@ const Home = () => {
 }
     
 export default Home
+
+
