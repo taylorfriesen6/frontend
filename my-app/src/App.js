@@ -7,17 +7,14 @@ import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
 import PlantCollection from "./components/PlantCollection";
 import SpeciesList from "./components/SpeciesList";
-import NavBar from "./components/NavBar";
 import { Route } from "react-router-dom";
 import NoPlants from "./components/NoPlants";
 import IndividualPlant from "./components/IndividualPlant";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-
 function App() {
   return (
     <div>
-
       <Route exact path="/" component={Login} />
       <Route path="/signup" component={SignUp} />
       <ProtectedRoute path="/editprofile" component={EditProfile} />

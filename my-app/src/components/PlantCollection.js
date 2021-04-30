@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { useHistory } from 'react-router-dom'
-import NoPlants from './NoPlants'
-import IndividualPlant from './IndividualPlant'
-import styled from 'styled-components'
-import '../App.css'
-import { axiosWithAuth } from '../auth/axiosWithAuth'
-import NavBar from './NavBar'
-
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import NoPlants from "./NoPlants";
+import IndividualPlant from "./IndividualPlant";
+import styled from "styled-components";
+import "../App.css";
+import { axiosWithAuth } from "../auth/axiosWithAuth";
 
 const Container = styled.div`
   display: flex;
@@ -34,7 +31,6 @@ const Container = styled.div`
   }
 `;
 const Add = styled.div`
-
   display: flex;
   justify-content: space-between;
   padding-left: 80px;
@@ -58,12 +54,12 @@ const Add = styled.div`
     font-size: 18px;
     color: #cbad91;
     cursor: pointer;
-        transition: ease-in 200ms all;
-        
-        &:hover{
-            border: solid 2px #CBAD91; 
-            border-radius: 10%;
-        }
+    transition: ease-in 200ms all;
+
+    &:hover {
+      border: solid 2px #cbad91;
+      border-radius: 10%;
+    }
   }
 `;
 
@@ -120,4 +116,3 @@ const PlantCollection = () => {
   );
 };
 export default PlantCollection;
-
