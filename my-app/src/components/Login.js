@@ -51,13 +51,20 @@ const Login = (props) => {
     e.preventDefault();
     axios
       .post(
-        "https://water-my-plants-tt14.herokuapp.com/api/auth/login",
-        loginValues
+        "https://water--my--plants.herokuapp.com/login",
+        `grant_type=password&username=${loginValues.email}&password=${loginValues.password}`,
+				{
+					headers: {
+						// btoa is converting our client id/client secret into base64
+						Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
+						"Content-Type": "application/x-www-form-urlencoded",
+					},
+				},
       )
       .then((res) => {
         console.log("login resp", res, res.data);
         //setLoginValues(initialFormValues)
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.access_token);
         // localStorage.setItem("userId", res.data.user.user_id )
         history.push("/collection");
       })

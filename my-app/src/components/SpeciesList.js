@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { axiosWithAuth } from '../auth/axiosWithAuth';
 import NavBar from './NavBar';
 
 //Component Import
@@ -34,7 +35,7 @@ const SpeciesList = () => {
     const [ loading, setIsLoading ] = useState(true);
 
     useEffect(() => {
-        axios.get("https://water-my-plants-tt14.herokuapp.com/api/species")
+        axiosWithAuth().get("/api/species")
             .then(res => {
                 setSpecies(res.data);
                 setIsLoading(false);

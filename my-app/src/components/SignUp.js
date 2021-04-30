@@ -62,12 +62,12 @@ const SignUp = () => {
     };
     axios
       .post(
-        "https://water-my-plants-tt14.herokuapp.com/api/auth/register",
+        "https://water--my--plants.herokuapp.com/createnewuser",
         data
       )
       .then((resObj) => {
         console.log("signup res", resObj);
-        history.push("/login");
+        history.push("/");
         //route to plant collection
       })
       .catch((err) => console.log({ err }));

@@ -6,8 +6,8 @@ export const axiosWithAuth = () => {
 
   return axios.create({
     headers: {
-      Authorization: token
+      Authorization: `Bearer ${token}`,
     },
-    baseURL: 'https://water-my-plants-tt14.herokuapp.com/'
+    baseURL: 'https://water--my--plants.herokuapp.com/'
   })
 }
