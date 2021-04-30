@@ -74,6 +74,8 @@ const EditPlant = (plants) => {
 
     console.log("plantuserplantid", plant.user_plant_id);
 
+
+=======
     axiosWithAuth()
       .put(`/api/userplants/`, updatedPlant)
       .then((update) => {
@@ -151,6 +153,7 @@ const EditPlant = (plants) => {
       </div>
     </EditPlantContainer>
   );
+
 };
 
 export default EditPlant;

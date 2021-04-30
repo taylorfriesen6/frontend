@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { axiosWithAuth } from "../auth/axiosWithAuth";
+
+import react, { useState, useHistory } from 'react';
+import styled from 'styled-components';
+import { axiosWithAuth } from '../auth/axiosWithAuth';
 import addSchema from "./AddSchema";
 import * as yup from "yup";
 
@@ -32,6 +33,7 @@ const initialFormErrors = {
   notes: "",
 };
 const AddPlant = (props) => {
+
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const { species_id } = props;
   const [formValues, setFormValues] = useState({
@@ -69,6 +71,8 @@ const AddPlant = (props) => {
       water_day: Number(formValues.water_day),
       notes: formValues.notes.trim(),
     };
+
+
 
     axiosWithAuth()
       .post(`/api/userplants`, newPlantData)

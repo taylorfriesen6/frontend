@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import NavBar from './NavBar';
 
 const StyledProfile = styled.div`
 position: absolute;
@@ -80,6 +81,8 @@ const Profile = () => {
 
 
     return (
+        <div>
+        <NavBar />
         <StyledProfile>
             <h1>Hi {info.name}</h1>
             <br></br>
@@ -90,6 +93,7 @@ const Profile = () => {
                 <button>Edit Profile</button>
             </Link>
         </StyledProfile>
+        </div>
     )
 }
 

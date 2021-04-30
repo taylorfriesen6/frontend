@@ -13,16 +13,19 @@ import NoPlants from "./components/NoPlants";
 import IndividualPlant from "./components/IndividualPlant";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+
 function App() {
   return (
     <div>
-      <NavBar />
-      <Route path="/login" component={Login} />
+
+      <Route exact path="/" component={Login} />
       <Route path="/signup" component={SignUp} />
       <ProtectedRoute path="/editprofile" component={EditProfile} />
       <ProtectedRoute path="/profile" component={Profile} />
-      <ProtectedRoute exact path="/" component={Home} />
+
+      <ProtectedRoute path="/home" component={Home} />
       <ProtectedRoute path="/collection" component={PlantCollection} />
+
       <ProtectedRoute path="/addplant" component={SpeciesList} />
       <ProtectedRoute path="/no-plants" component={NoPlants} />
       <ProtectedRoute path="/individual-plant" component={IndividualPlant} />

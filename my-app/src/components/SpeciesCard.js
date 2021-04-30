@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import styled from "styled-components";
 
-import AddPlant from "./AddPlant";
+import axios from 'axios';
+import react, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import AddPlant from './AddPlant';
+
+
 
 //STYLING
 const CardContainer = styled.div`

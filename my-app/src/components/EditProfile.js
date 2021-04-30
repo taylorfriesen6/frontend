@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import EditProfileSchema from "./EditProfileSchema";
-import axios from "axios";
+import axios from 'axios'
+import NavBar from "./NavBar";
+
 
 const initialFormValues = {
   email: "",
@@ -125,54 +127,59 @@ const EditProfile = (props) => {
 
   console.log(profileValues);
 
-  return (
+
+return(
+  <div>
+  <NavBar />
     <StyledProfile>
-      <form onSubmit={submitForm}>
-        <h2>Edit Profile</h2>
-        <div>
-          <p>
-            <h3>Change Email</h3>
-            <label>
-              <input
-                name="email"
-                placeholder="New Email"
-                type="email"
-                value={profileValues.email}
-                onChange={handleChanges}
-              />
-            </label>
-            <p>{formErrors.email}</p>
-          </p>
-          <p>
-            <h3>Change Password</h3>
-            <label>
-              <input
-                name="password"
-                placeholder="New Password"
-                type="password"
-                value={profileValues.password}
-                onChange={handleChanges}
-              />
-            </label>
-            <p>{formErrors.password}</p>
-            <label>
-              <input
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                type="password"
-                value={profileValues.confirmPassword}
-                onChange={handleChanges}
-              />
-            </label>
-            <p>{formErrors.confirmPassword}</p>
-          </p>
-        </div>
-        <div>
-          <button type="submit">Save Changes</button>
-        </div>
+    <form onSubmit={submitForm}>
+      <h2>Edit Profile</h2>
+      <div>
+        
+        <h3>Change Email</h3>
+          <label>
+            <input
+              name="email"
+              placeholder="New Email"
+              type="email"
+              value={profileValues.email}
+              onChange={handleChanges}
+            />
+          </label>
+          <p>{formErrors.email}</p>
+        
+        
+        <h3>Change Password</h3>
+          <label>
+            <input
+              name="password"
+              placeholder="New Password"
+              type="password"
+              value={profileValues.password}
+              onChange={handleChanges}
+            />
+          </label>
+          <p>{formErrors.password}</p>
+          <label>
+            <input
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              type="password"
+              value={profileValues.confirmPassword}
+              onChange={handleChanges}
+            />
+          </label>
+          <p>{formErrors.confirmPassword}</p>
+        
+      </div>
+      <div>
+        <button type="submit">Save Changes</button>
+      </div>
       </form>
-    </StyledProfile>
-  );
-};
+      </StyledProfile>
+      </div>
+)
+}
+
 
 export default EditProfile;

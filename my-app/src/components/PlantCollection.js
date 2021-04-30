@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import NoPlants from "./NoPlants";
-import IndividualPlant from "./IndividualPlant";
-import styled from "styled-components";
-import "../App.css";
-import { axiosWithAuth } from "../auth/axiosWithAuth";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+import NoPlants from './NoPlants'
+import IndividualPlant from './IndividualPlant'
+import styled from 'styled-components'
+import '../App.css'
+import { axiosWithAuth } from '../auth/axiosWithAuth'
+import NavBar from './NavBar'
+
 
 const Container = styled.div`
   display: flex;
@@ -31,12 +34,14 @@ const Container = styled.div`
   }
 `;
 const Add = styled.div`
+
   display: flex;
   justify-content: space-between;
   padding-left: 80px;
   padding-right: 80px;
 
   & h2 {
+    margin-top: 1rem;
     font-family: Amatic SC;
     font-style: normal;
     font-weight: bold;
@@ -46,18 +51,19 @@ const Add = styled.div`
   }
 
   & h3 {
+    margin-top: 1rem;
     font-family: Amatic SC;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
     color: #cbad91;
     cursor: pointer;
-    transition: ease-in 500ms all;
-
-    &:hover {
-      color: blue;
-      background-color: orange !important;
-    }
+        transition: ease-in 200ms all;
+        
+        &:hover{
+            border: solid 2px #CBAD91; 
+            border-radius: 10%;
+        }
   }
 `;
 
@@ -114,3 +120,4 @@ const PlantCollection = () => {
   );
 };
 export default PlantCollection;
+
